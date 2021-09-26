@@ -8,14 +8,12 @@ export default function Home() {
       <Head>
         <title>MealDotMatch Next</title>
       </Head>
-
       <Nav />
-      <span>Been here before?</span>
+      <label>Been here before?</label>
       <Link href="/quiz">
         <button>Start Quiz</button>
       </Link>
-
-      <span>First time here?</span>
+      <label>First time here?</label>
       <Link href="/guidedTour">
         <button>Take A Tour</button>
       </Link>
