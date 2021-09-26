@@ -4,12 +4,21 @@ import Nav from '../components/Nav'
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>MealDotMatch Next</title>
       </Head>
+
       <Nav />
-      <Link href="/quiz">Start Quiz</Link>
-    </div>
+      <span>Been here before?</span>
+      <Link href="/quiz">
+        <button>Start Quiz</button>
+      </Link>
+
+      <span>First time here?</span>
+      <Link href="/guidedTour">
+        <button>Take A Tour</button>
+      </Link>
+    </>
   )
 }

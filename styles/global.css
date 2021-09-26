@@ -1,0 +1,11 @@
+* {
+  font-family: 'Arima Madurai', cursive;
+}
+
+button {
+  @apply border p-2 rounded-lg;
+}
+
+.selectionContainer {
+  @apply h-20 w-20 border;
+}

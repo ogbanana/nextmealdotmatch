@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css'
+import '../styles/global.css'
 import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 import { RestLink } from 'apollo-link-rest'
 

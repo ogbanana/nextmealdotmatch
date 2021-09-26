@@ -10,13 +10,12 @@ const RecipeSearchBar = () => {
         const recipeSearch = formData.get('recipeSearch')
         getRecipes(recipeSearch)
       }}
-      // className="h-5"
     >
       <input
         name="recipeSearch"
         type="text"
         placeholder="chocolate chip cookies"
-        className="h-10 rounded-lg border p-1 m-2"
+        className="h-10 rounded-lg border pl-2 m-2 w-72 "
       ></input>
       <button>Search</button>
     </form>
