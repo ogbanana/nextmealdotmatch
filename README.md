@@ -1,34 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## About the app
 
-## Getting Started
+Meal.Match is a full stack web application that matches users with recipes. Users complete a short quiz indicating the ingredients they would like to work with. Using GraphQL to query the Edamam Recipe Search API, Meal.Match offers them 5 recipe suggestions. Meal.Match filters the recipes from Edamam's API, and calculates a percent match. This percent match indicates the percentage of the recipe's ingredients that the user already has. For matches that aren't 100% matches, Meal.Match generates a shopping list for the missing ingredients, and offers the user the opportunity to text that list to their phone.
 
-First, run the development server:
+## To run the app
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+1.  `npm install`
+2.  `npm run start-dev`
+3.  navigate to `http://localhost:8080/` to view the app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Or, visit our deployed app at: www.mealdotmatch.com
