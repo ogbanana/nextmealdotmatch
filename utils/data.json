@@ -1,0 +1,35 @@
+[
+  {
+    "question": "Do you have any dairy?",
+    "options": ["Milk", "Cheese", "Yogurt", "Butter"]
+  },
+  {
+    "question": "What proteins do you have?",
+    "options": ["Chicken", "Pork", "Beef", "Lamb", "Duck", "Eggs", "Tofu", "Seitan"]
+  },
+  {
+    "question": "Do you have any seafood?",
+    "options": ["Fish", "Shrimp", "Crab", "Clam"]
+  },
+  {
+    "question": "What vegetable(s) do you have?",
+    "options": ["Lettuce", "Tomato", "Onion", "String Beans", "Bok Choy", "Brocoli", "Carrot"]
+  },
+  {
+    "question": "What fruit(s) do you have?",
+    "options": [
+      "Apple",
+      "Banana",
+      "Grapes",
+      "Orange",
+      "Watermelon",
+      "Cherry",
+      "Grapefruit",
+      "Strawberry"
+    ]
+  },
+  {
+    "question": "What grain(s) and pasta do you have?'",
+    "options": ["Rice", "Quinoa", "Couscous", "Spaghetti", "Ramen"]
+  }
+]

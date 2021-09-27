@@ -1,78 +1,79 @@
 import React, { useState } from 'react'
 import Nav from '../components/Nav'
-
-const Option = (props) => (
-  <button className="h-28 w-28 border rounded m-2 flex items-center justify-center" {...props} />
-)
+import data from '../utils/data.json'
+import FoodQuestion from '../components/FoodQuestion'
+import TimeQuestion from '../components/TimeQuestion'
+import { formatQuery, getRecipes } from '../utils/helpers'
 
 const SelectedItem = (props) => (
-  <button className="h-28 w-28 border rounded m-2 flex items-center justify-center" {...props} />
+  <button className="h-28 w-28 m-1 border rounded flex items-center justify-center" {...props} />
 )
 
 const Quiz = () => {
-  const [selection, setSelection] = useState('')
+  const [time, setTime] = useState('')
+  const [ingredients, setIngredients] = useState([])
 
-  const handleOption = (event) => {
-    setSelection(event.target.value)
+  const handleTimeOption = (event) => {
+    setTime(event.target.value)
   }
 
-  const deselect = () => {
-    setSelection('')
+  const deselectTime = () => {
+    setTime('')
   }
 
-  const questions = [
-    'How much time do you have for this meal?',
-    'What dairy do you have?',
-    'What meats and/or proteins do you have?',
-    'What seafood do you have?',
-    'What vegetable(s) do you have?',
-    'What fruit(s) do you have?',
-    'What grain(s) and pasta do you have?',
-  ]
+  const handleIngredientOption = (event) => {
+    if (!ingredients.includes(event.target.value)) {
+      setIngredients([...ingredients, event.target.value])
+    }
+  }
+
+  const deselectIngredient = (event) => {
+    setIngredients(ingredients.filter((item) => item !== event.target.value))
+  }
+
+  const handleSubmit = () => {
+    if (!time) throw new Error('Please select a time!')
+    if (ingredients.length < 1) throw new Error('Please adds some ingredients')
+    const query = formatQuery(...ingredients, time)
+    const data = getRecipes(query)
+    console.log(data)
+  }
 
   return (
     <>
       <Nav />
       <div className="flex w-screen overflow">
-        <div className="border w-1/3 h-4/6 ml-10 mt-28 fixed">
-          {selection && <SelectedItem onClick={deselect}>{selection}</SelectedItem>}
+        <div className="border w-4/12 h-2/3 fixed mt-28 ml-10">
+          <div className="flex flex-wrap m-1 pl-16">
+            {time && <SelectedItem onClick={deselectTime}>{time}</SelectedItem>}
+            {ingredients.length > 0 &&
+              ingredients.map((ingredient, index) => {
+                return (
+                  <SelectedItem
+                    key={ingredient + index}
+                    value={ingredient}
+                    onClick={deselectIngredient}
+                  >
+                    {ingredient}
+                  </SelectedItem>
+                )
+              })}
+          </div>
         </div>
         <div className="h-auto w-full flex items-end flex-col">
-          <div className="h-screen w-2/3 flex flex-col justify-center">
-            <div className="flex justify-center items-center text-3xl">{questions[0]}</div>
-            <div className="flex justify-center">
-              <Option onClick={handleOption} value={'30 Minutes'}>
-                30 Minutes
-              </Option>
-              <Option onClick={handleOption} value={'60 Minutes'}>
-                60 Minutes
-              </Option>
-              <Option onClick={handleOption} value={'90 Minutes'}>
-                90 Minutes
-              </Option>
-            </div>
-            <div className="flex justify-end">
-              <button className="w-auto h-10 p-2">Next &gt;</button>
-            </div>
-          </div>
-
-          <div className="h-screen w-2/3 flex flex-col justify-center">
-            <div className="flex justify-center text-3xl">{questions[1]}</div>
-            <div className="flex justify-center">
-              <Option onClick={handleOption} value={'30 Minutes'}>
-                30 Minutes
-              </Option>
-              <Option onClick={handleOption} value={'60 Minutes'}>
-                60 Minutes
-              </Option>
-              <Option onClick={handleOption} value={'90 Minutes'}>
-                90 Minutes
-              </Option>
-            </div>
-            <div className="flex justify-end">
-              <button className="w-auto h-10 p-2 flex ">Next &gt;</button>
-            </div>
-          </div>
+          <TimeQuestion handleTimeOption={handleTimeOption} />
+          {data.map((question, idx) => {
+            return (
+              <FoodQuestion
+                key={idx + question}
+                id={idx}
+                data={question}
+                length={data.length - 1}
+                handleIngredientOption={handleIngredientOption}
+                handleSubmit={handleSubmit}
+              />
+            )
+          })}
         </div>
       </div>
     </>

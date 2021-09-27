@@ -1,5 +1,5 @@
 import react from 'react'
-import getRecipes from '../utils/helpers'
+import { getRecipes } from '../utils/helpers'
 
 const RecipeSearchBar = () => {
   return (
