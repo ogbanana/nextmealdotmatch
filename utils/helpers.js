@@ -4,23 +4,15 @@ export async function getRecipes(query) {
   try {
     const data = await fetch(url)
     const json = await data.json()
-    console.log(json)
+    return json
   } catch (err) {
     console.error(err)
   }
 }
 
-export function formatQuery(...params) {
-  let foodQuery = ''
-  let timeQuery = ''
-  params.forEach((item) => {
-    item = item.toLowerCase()
-    if (!item.includes('minutes')) {
-      foodQuery += item + '%20'
-    } else {
-      timeQuery += `&time=${item.slice(0, 2)}`
-    }
-  })
-  const query = foodQuery + timeQuery
-  return query
+export function formatQuery({ ingredients, time }) {
+  console.log({ ingredients, time })
+  const foodQuery = ingredients.join('&').toLowerCase()
+  const timeQuery = `&time=${time.slice(0, 2)}`
+  return foodQuery + timeQuery
 }

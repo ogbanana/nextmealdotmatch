@@ -1,5 +1,6 @@
-import react from 'react'
-import { getRecipes } from '../utils/helpers'
+import Router from 'next/router'
+
+import { formatQuery } from '../utils/helpers'
 
 const RecipeSearchBar = () => {
   return (
@@ -8,7 +9,12 @@ const RecipeSearchBar = () => {
         event.preventDefault()
         const formData = new FormData(event.target)
         const recipeSearch = formData.get('recipeSearch')
-        getRecipes(recipeSearch)
+        const query = formatQuery({ ingredients: [recipeSearch], time: '60 Minutes' })
+
+        Router.push({
+          pathname: '/results',
+          query: { query },
+        })
       }}
     >
       <input
