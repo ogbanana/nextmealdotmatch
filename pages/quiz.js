@@ -9,7 +9,10 @@ import data from '../utils/data.json'
 import { formatQuery } from '../utils/helpers'
 
 const SelectedItem = (props) => (
-  <button className="h-28 w-28 m-1 border rounded flex items-center justify-center" {...props} />
+  <button
+    className="h-28 w-28 m-1 border rounded flex items-center justify-center bg-green-200"
+    {...props}
+  />
 )
 
 const Quiz = () => {
@@ -49,45 +52,53 @@ const Quiz = () => {
   return (
     <>
       <Nav />
-      <div className="flex w-screen overflow">
-        <div className="border w-4/12 h-2/3 fixed mt-28 ml-10">
-          <div className="flex h-auto w-full justify-center">
-            <div className="flex flex-wrap m-1 w-10/12">
-              {time && <SelectedItem onClick={deselectTime}>{time}</SelectedItem>}
-              {ingredients.length > 0 &&
-                ingredients.map((ingredient, index) => {
-                  return (
-                    <SelectedItem
-                      key={ingredient + index}
-                      value={ingredient}
-                      onClick={deselectIngredient}
-                    >
-                      {ingredient}
-                    </SelectedItem>
-                  )
-                })}
+
+      <div className="h-screen w-screen bg-kitchen-image bg-cover bg-no-repeat flex justify-center">
+        <div className="w-11/12 h-full flex items-center justify-center">
+          <div className="w-11/12 h-5/6 bg-opacity-50 bg-white flex items-center mt-5 rounded-xl border-4">
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="border w-7/12 h-5/6 bg-cuttingboard-image bg-no-repeat bg-cover rounded-3xl justify-center items-center">
+                <div className="flex h-auto w-auto justify-center items-center">
+                  <div className="flex flex-wrap m-1 w-10/12">
+                    {time && <SelectedItem onClick={deselectTime}>{time}</SelectedItem>}
+                    {ingredients.length > 0 &&
+                      ingredients.map((ingredient, index) => {
+                        return (
+                          <SelectedItem
+                            key={ingredient + index}
+                            value={ingredient}
+                            onClick={deselectIngredient}
+                          >
+                            {ingredient}
+                          </SelectedItem>
+                        )
+                      })}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="w-full h-full overflow-scroll">
+              <TimeQuestion handleTimeOption={handleTimeOption} />
+              {data.map((question, idx) => {
+                return (
+                  <FoodQuestion
+                    key={idx + question}
+                    id={idx}
+                    data={question}
+                    length={data.length - 1}
+                    handleIngredientOption={handleIngredientOption}
+                    handleSubmit={handleSubmit}
+                  />
+                )
+              })}
+              <Link href="/quiz#0">
+                <button type="button" className="mr-28">
+                  Back To Top
+                </button>
+              </Link>
             </div>
           </div>
-        </div>
-        <div className="h-auto w-full flex items-end flex-col">
-          <TimeQuestion handleTimeOption={handleTimeOption} />
-          {data.map((question, idx) => {
-            return (
-              <FoodQuestion
-                key={idx + question}
-                id={idx}
-                data={question}
-                length={data.length - 1}
-                handleIngredientOption={handleIngredientOption}
-                handleSubmit={handleSubmit}
-              />
-            )
-          })}
-          <Link href="/quiz#0">
-            <button type="button" className="mr-28">
-              Back To Top
-            </button>
-          </Link>
         </div>
       </div>
     </>

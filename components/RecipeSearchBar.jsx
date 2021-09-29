@@ -16,6 +16,7 @@ const RecipeSearchBar = () => {
           query: { query },
         })
       }}
+      className="pt-2 mr-20 pr-5"
     >
       <input
         name="recipeSearch"
@@ -23,7 +24,7 @@ const RecipeSearchBar = () => {
         placeholder="chocolate chip cookies"
         className="h-10 rounded-lg border pl-2 m-2 w-72 "
       ></input>
-      <button>Search</button>
+      <button className="border p-1 h-10 w-20 rounded-lg bg-green-300">Search</button>
     </form>
   )
 }

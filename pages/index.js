@@ -11,7 +11,7 @@ export default function Home() {
         <title>MealDotMatch Next</title>
       </Head>
       <Nav />
-      <div className="w-screen h-screen flex justify-end items-center">
+      <div className="w-screen h-screen flex justify-end items-center bg-homepage-full bg-no-repeat bg-cover">
         <div className="w-4/12 flex mr-20">
           <div className="flex flex-col m-2 w-1/2 justify-center items-center">
             <span>Been here before?</span>
