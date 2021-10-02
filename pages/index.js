@@ -13,7 +13,7 @@ export default function Home() {
       <Nav />
       <div className="w-screen h-screen flex justify-end items-center bg-homepage-full bg-no-repeat bg-cover">
         <div className="w-4/12 flex mr-20 flex-col">
-          <span className="flex text-center justify-center text-5xl mb-2 text-green-400">
+          <span className="flex text-center justify-center text-5xl mb-2 text-teal-400">
             Welcome to Meal.Match
           </span>
           <span className="text-center mb-20 text-lg">
@@ -24,13 +24,13 @@ export default function Home() {
             <div className="flex flex-col w-1/2 justify-center items-center">
               <span>Been here before?</span>
               <Link href="/quiz" passHref>
-                <a className="bg-green-300 p-2 mt-2 rounded-lg w-28 text-center">Start Quiz</a>
+                <a className="bg-teal-300 p-2 mt-2 rounded-lg w-28 text-center">Start Quiz</a>
               </Link>
             </div>
             <div className="flex flex-col w-1/2 justify-center items-center">
               <span>First time here?</span>
               <Link href="/guided-tour" passHref>
-                <a className="bg-green-300 p-2 mt-2 rounded-lg w-28 text-center">Take A Tour</a>
+                <a className="bg-teal-300 p-2 mt-2 rounded-lg w-28 text-center">Take A Tour</a>
               </Link>
             </div>
           </div>

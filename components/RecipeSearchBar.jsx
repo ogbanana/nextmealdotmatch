@@ -24,7 +24,7 @@ const RecipeSearchBar = () => {
         placeholder="chocolate chip cookies"
         className="h-10 rounded-lg border pl-2 m-2 w-72 "
       ></input>
-      <button className="border p-1 h-10 w-20 rounded-lg bg-green-300">Search</button>
+      <button className="border p-1 h-10 w-20 rounded-lg bg-teal-300">Search</button>
     </form>
   )
 }

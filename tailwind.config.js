@@ -1,4 +1,4 @@
-const { urlObjectKeys } = require('next/dist/next-server/lib/utils')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: 'jit',
@@ -10,6 +10,15 @@ module.exports = {
         'homepage-full': 'url("/images/homepage-bg-full.jpeg")',
         'cuttingboard-image': 'url("/images/cuttingboard-image.jpg")',
         'kitchen-image': 'url("/images/kitchen-image.jpg")',
+      },
+      colors: {
+        teal: colors.teal,
+        cyan: colors.cyan,
+        rose: colors.rose,
+        blueGray: colors.blueGray,
+      },
+      dropShadow: {
+        '3xl': '0 35px 35px rgba(0, 0, 0, 0.30)',
       },
     },
   },
