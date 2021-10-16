@@ -57,33 +57,35 @@ const Quiz = () => {
         <div className="w-full h-full bg-opacity-50 bg-white">
           <div className="w-full h-full flex items-center justify-center">
             <div className="w-full h-full flex items-center justify-center">
-              <div className="w-7/12 h-4/6 bg-cuttingboard-image bg-no-repeat bg-cover rounded-3xl justify-center items-center drop-shadow-3xl">
-                <div className="flex flex-col h-auto w-auto justify-center items-center">
-                  <div className="text-lg mt-4 mb-4">
-                    {time && (
-                      <button
-                        onClick={deselectTime}
-                        type="button"
-                        className="bg-gray-200 bg-opacity-80 border-2 pl-2 pr-2 rounded-lg"
-                      >
-                        Selected Time: {time}
-                      </button>
-                    )}
-                  </div>
-                  <div className="w-full h-full flex items-center justify-center">
-                    <div className="flex flex-wrap justify-center items-center w-5/6">
-                      {ingredients.length > 0 &&
-                        ingredients.map((ingredient, index) => {
-                          return (
-                            <SelectedItem
-                              key={ingredient + index}
-                              value={ingredient}
-                              onClick={deselectIngredient}
-                            >
-                              {ingredient}
-                            </SelectedItem>
-                          )
-                        })}
+              <div className="w-7/12 h-5/6 bg-cuttingboard-image bg-no-repeat mt-20 bg-cover rounded-3xl justify-center items-center drop-shadow-3xl">
+                <div className="bg-warmGray-300 bg-opacity-20 rounded-3xl w-full h-full">
+                  <div className="flex flex-col h-auto w-auto justify-center items-center">
+                    <div className="text-lg mt-4 mb-4">
+                      {time && (
+                        <button
+                          onClick={deselectTime}
+                          type="button"
+                          className="bg-gray-200 bg-opacity-80 border-2 pl-2 pr-2 rounded-lg"
+                        >
+                          Selected Time: {time}
+                        </button>
+                      )}
+                    </div>
+                    <div className="w-5/6 h-full flex items-center justify-center">
+                      <div className="flex flex-wrap w-full h-full pl-4">
+                        {ingredients.length > 0 &&
+                          ingredients.map((ingredient, index) => {
+                            return (
+                              <SelectedItem
+                                key={ingredient + index}
+                                value={ingredient}
+                                onClick={deselectIngredient}
+                              >
+                                {ingredient}
+                              </SelectedItem>
+                            )
+                          })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -107,10 +109,10 @@ const Quiz = () => {
             </div>
           </div>
         </div>
-        <Link href="/quiz#0">
+        <Link href="/quiz#0" passHref>
           <button
             type="button"
-            className="w-32 h-12 p-2 mr-2 bg-teal-300 rounded-lg hover:bg-rose-400 drop-shadow-3xl absolute bottom-0"
+            className="w-32 h-12 p-2 mr-2 bg-green-300 rounded-lg hover:bg-rose-400 drop-shadow-3xl absolute bottom-0"
           >
             Back To Top
           </button>
