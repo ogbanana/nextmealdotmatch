@@ -12,8 +12,8 @@ export default function Home() {
       </Head>
       <Nav />
       <div className="w-screen h-screen flex justify-end items-center bg-homepage-full bg-no-repeat bg-cover">
-        <div className="w-5/12 flex pr-48 flex-col">
-          <span className="flex text-center justify-center text-5xl mb-2 text-green-500">
+        <div className="w-6/12 flex pr-48 flex-col">
+          <span className="flex text-center justify-center text-5xl mb-2 text-green-500 bold">
             Welcome to Meal.Match
           </span>
           <span className="text-center mb-20 text-lg">
@@ -21,16 +21,11 @@ export default function Home() {
             recipies that match what you have, not what you need.
           </span>
           <div className="flex flex-col md:flex-row items-center">
-            <div className="flex flex-col w-1/2 justify-center items-center">
-              <span>Been here before?</span>
+            <div className="flex flex-col w-full justify-center items-center">
               <Link href="/quiz" passHref>
-                <a className="bg-green-300 p-2 mt-2 rounded-lg w-28 text-center">Start Quiz</a>
-              </Link>
-            </div>
-            <div className="flex flex-col w-1/2 justify-center items-center">
-              <span>First time here?</span>
-              <Link href="/guided-tour" passHref>
-                <a className="bg-green-300 p-2 mt-2 rounded-lg w-28 text-center">Take A Tour</a>
+                <a className="bg-green-300 p-4 mt-2 rounded-lg w-30 drop-shadow-lg text-center">
+                  Start Quiz
+                </a>
               </Link>
             </div>
           </div>

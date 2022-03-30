@@ -1,6 +1,11 @@
 * {
+  font-family: 'Montserrat', sans-serif;
+  @apply text-blueGray-800 text-lg;
+}
+
+h1 {
   font-family: 'Arima Madurai', cursive;
-  @apply text-blueGray-800;
+  @apply text-blueGray-800 text-5xl;
 }
 
 .selectionContainer {
