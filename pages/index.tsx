@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Head from 'next/head'
 import Link from 'next/link'
+import { FC } from 'react'
 
 import Nav from '../components/Nav'
 
-export default function Home() {
+const Home: FC = () => {
   return (
     <>
       <Head>
@@ -34,3 +35,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home
