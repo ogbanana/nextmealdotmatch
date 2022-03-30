@@ -8,7 +8,6 @@ export async function getRecipes(query) {
   try {
     const data = await fetch(url)
     const json = await data.json()
-    console.log(json)
     return json
   } catch (err) {
     console.error(err)
@@ -16,7 +15,6 @@ export async function getRecipes(query) {
 }
 
 export function formatQuery({ ingredients, time }) {
-  console.log({ ingredients, time })
   const foodQuery = ingredients.join('&').toLowerCase()
   const timeQuery = `&time=${time.slice(0, 2)}`
   return foodQuery + timeQuery
