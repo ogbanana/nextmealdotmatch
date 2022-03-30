@@ -1,13 +1,15 @@
 import Router from 'next/router'
+import { FC, FormEvent } from 'react'
 
 import { formatQuery } from '../utils/helpers'
 
-const RecipeSearchBar = () => {
+const RecipeSearchBar: FC = () => {
   return (
     <form
-      onSubmit={(event) => {
+      onSubmit={(event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const formData = new FormData(event.target)
+
+        const formData = new FormData(event.currentTarget)
         const recipeSearch = formData.get('recipeSearch')
         const query = formatQuery({ ingredients: [recipeSearch], time: '60 Minutes' })
 

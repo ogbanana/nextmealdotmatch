@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import Nav from '../components/Nav'
 import RecipeCard from '../components/RecipeCard'
 import { getRecipes } from '../utils/helpers'
 
-const Results = () => {
+const Results: FC = () => {
   const router = useRouter()
   const { query } = router.query
   const [recipes, setRecipes] = useState([])
@@ -31,7 +31,7 @@ const Results = () => {
         <div className="w-screen h-full bg-warmGray-200 bg-opacity-70 flex justify-center">
           <div className="w-7/12 h-full flex flex-wrap items-center justify-center pt-6">
             {recipes?.length
-              ? recipes.map((current, index) => {
+              ? recipes.map((current) => {
                   return (
                     <div key={current.recipe.label}>
                       <RecipeCard recipe={current.recipe} />
