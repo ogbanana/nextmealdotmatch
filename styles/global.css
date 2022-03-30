@@ -8,6 +8,6 @@ h1 {
   @apply text-blueGray-800 text-5xl;
 }
 
-.selectionContainer {
-  @apply h-20 w-20 border;
+button {
+  @apply border-2;
 }
