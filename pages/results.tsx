@@ -27,13 +27,13 @@ const Results: FC = () => {
   return (
     <div>
       <Nav />
-      <div className="w-screen h-screen  bg-basil-image bg-cover bg-no-repeat">
-        <div className="w-screen h-full bg-warmGray-200 bg-opacity-70 flex justify-center">
-          <div className="w-7/12 h-full flex flex-wrap items-center justify-center pt-6">
+      <div className=" h-full min-h-screen bg-basil-image bg-cover bg-no-repeat">
+        <div className="h-full min-h-screen  bg-warmGray-200 bg-opacity-70 flex justify-center">
+          <div className="h-full flex flex-wrap items-center justify-center pt-6 mt-24">
             {recipes?.length
               ? recipes.map((current) => {
                   return (
-                    <div key={current.recipe.label}>
+                    <div className="mb-16" key={current.recipe.label}>
                       <RecipeCard recipe={current.recipe} />
                     </div>
                   )

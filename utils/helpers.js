@@ -1,7 +1,10 @@
 import sampleData from '../sampleData.json'
 
 export async function getRecipes(query) {
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT === 'DEV') {
+  if (
+    process.env.NEXT_PUBLIC_ENVIRONMENT === 'DEV' &&
+    process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'TRUE'
+  ) {
     return { hits: sampleData }
   }
   console.log('THE FINAL QUERY', query)

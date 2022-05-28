@@ -57,21 +57,19 @@ const Quiz: FC = () => {
         <div id="questionsBackground">
           <div id="questionsContainer">
             <div id="screenLeft">
-              <div id="cuttingBoard">
-                <div id="cuttingBoardOverlay">
-                  <div id="selectedItemsContainers">
-                    <div className="text-lg mt-4 mb-4">
-                      {time && (
-                        <button
-                          onClick={deselectTime}
-                          type="button"
-                          className="bg-gray-200 bg-opacity-80 border-2 p-2 rounded-lg"
-                        >
-                          Selected Time: {time}
-                        </button>
-                      )}
-                    </div>
-                    <div className="w-5/6 h-full flex items-center justify-center">
+              <div id="cuttingBoard" className="scrollbar">
+                <div id="selectedItemsContainers">
+                  <div className="text-lg mt-4 mb-4 flex flex-col items-center justify-center w-full">
+                    {time && (
+                      <button
+                        onClick={deselectTime}
+                        type="button"
+                        className="bg-gray-200 bg-opacity-80 border-2 p-2 rounded-lg"
+                      >
+                        Selected Time: {time}
+                      </button>
+                    )}
+                    <div className="w-5/6 h-full flex items-center justify-center mt-8">
                       <div className="flex flex-wrap w-full h-full pl-4">
                         {userIngredients.length > 0 &&
                           userIngredients.map((ingredient, index) => {
@@ -89,11 +87,15 @@ const Quiz: FC = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="submitButton">
-                    <button id="submitNow" onClick={handleSubmit}>
-                      Submit Now
-                    </button>
-                  </div>
+                </div>
+                <div className="submitButton">
+                  <button
+                    disabled={!time}
+                    id={!time ? 'submitNowDisabled' : 'submitNow'}
+                    onClick={handleSubmit}
+                  >
+                    Submit Now
+                  </button>
                 </div>
               </div>
             </div>

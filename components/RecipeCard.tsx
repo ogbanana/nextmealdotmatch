@@ -14,7 +14,7 @@ interface RecipeCardProps {
 const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
   return (
     <Link href="/selectedRecipe" passHref>
-      <div className="min-h-96 w-60 mr-4 ml-4 pb-4 border rounded-xl">
+      <div className="flex flex-col h-96 w-96 mr-4 ml-4 pb-4 border rounded-xl">
         <Image
           className="rounded-t-xl"
           src={recipe.image}
@@ -23,7 +23,8 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
           width={400}
           loader={() => recipe.image}
         />
-        <label className="mt-4">{recipe.label}</label>
+
+        <label className="mt-4 p-2 ">{recipe.label}</label>
       </div>
     </Link>
   )
