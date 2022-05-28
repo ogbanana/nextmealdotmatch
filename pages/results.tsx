@@ -14,9 +14,7 @@ const Results: FC = () => {
     const retrieveRecipes = async () => {
       try {
         const { hits } = await getRecipes(query)
-        const hitsCopy = [...hits]
-        const topEight = hitsCopy.splice(0, 6)
-        setRecipes(topEight)
+        setRecipes(hits.slice(0, 6))
       } catch (error) {
         console.error(error)
       }
@@ -25,7 +23,7 @@ const Results: FC = () => {
   }, [query])
 
   return (
-    <div>
+    <>
       <Nav />
       <div className=" h-full min-h-screen bg-basil-image bg-cover bg-no-repeat">
         <div className="h-full min-h-screen  bg-warmGray-200 bg-opacity-70 flex justify-center">
@@ -42,7 +40,7 @@ const Results: FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

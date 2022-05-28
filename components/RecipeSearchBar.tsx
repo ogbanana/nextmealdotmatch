@@ -11,7 +11,7 @@ const RecipeSearchBar: FC = () => {
 
         const formData = new FormData(event.currentTarget)
         const recipeSearch = formData.get('recipeSearch')
-        const query = formatQuery({ ingredients: [recipeSearch], time: '60 Minutes' })
+        const query = formatQuery({ userIngredients: [recipeSearch], time: '60 Minutes' })
 
         Router.push({
           pathname: '/results',
