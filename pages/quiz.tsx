@@ -14,13 +14,7 @@ import { SelectedIngredientsContext } from '../context/state'
 
 const Quiz: FC = () => {
   const [time, setTime] = useState('')
-  const [ingredients, setIngredients] = useState([])
-
   const { userIngredients, setUserIngredients } = useContext(SelectedIngredientsContext)
-
-  useEffect(() => {
-    setUserIngredients(ingredients)
-  }, [ingredients])
 
   const handleTimeOption = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.target as HTMLButtonElement
@@ -33,21 +27,21 @@ const Quiz: FC = () => {
 
   const handleIngredientOption = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.target as HTMLButtonElement
-    if (!ingredients.includes(button.value)) {
-      setIngredients([...ingredients, button.value])
+    if (!userIngredients.includes(button.value)) {
+      setUserIngredients([...userIngredients, button.value])
     }
   }
 
   const deselectIngredient = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.target as HTMLButtonElement
-    setIngredients(ingredients.filter((item) => item !== button.value))
+    setUserIngredients(userIngredients.filter((item) => item !== button.value))
   }
 
   const handleSubmit = async () => {
     if (!time) throw new Error('Please select a time!')
-    if (ingredients.length < 1) throw new Error('Please adds some ingredients')
+    if (userIngredients.length < 1) throw new Error('Please adds some ingredients')
 
-    const query = formatQuery({ ingredients, time })
+    const query = formatQuery({ userIngredients, time })
 
     Router.push({
       pathname: '/results',
@@ -79,8 +73,8 @@ const Quiz: FC = () => {
                     </div>
                     <div className="w-5/6 h-full flex items-center justify-center">
                       <div className="flex flex-wrap w-full h-full pl-4">
-                        {ingredients.length > 0 &&
-                          ingredients.map((ingredient, index) => {
+                        {userIngredients.length > 0 &&
+                          userIngredients.map((ingredient, index) => {
                             return (
                               <button
                                 id="selectedItem"

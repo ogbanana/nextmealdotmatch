@@ -15,8 +15,8 @@ export async function getRecipes(query) {
   }
 }
 
-export function formatQuery({ ingredients, time }) {
-  const foodQuery = ingredients.join('&').toLowerCase()
+export function formatQuery({ userIngredients, time }) {
+  const foodQuery = userIngredients.join('&').toLowerCase()
   const timeQuery = `&time=${time.slice(0, 2)}`
   return foodQuery + timeQuery
 }
