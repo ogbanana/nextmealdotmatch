@@ -1,13 +1,12 @@
 import { FC, createContext, useState, Dispatch, SetStateAction } from 'react'
+interface UserIngredientsInterface {
+  userIngredients: string[]
+  setUserIngredients: Dispatch<SetStateAction<string[]>>
+}
 
 const userIngredientsDefaultValue = {
   userIngredients: [],
   setUserIngredients: () => {},
-}
-
-interface UserIngredientsInterface {
-  userIngredients: string[]
-  setUserIngredients: Dispatch<SetStateAction<string[]>>
 }
 
 const SelectedIngredientsContext = createContext<UserIngredientsInterface>(
