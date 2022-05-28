@@ -1,4 +1,6 @@
+import Link from 'next/link'
 import Image from 'next/image'
+
 import React, { FC } from 'react'
 
 interface RecipeCardProps {
@@ -11,7 +13,7 @@ interface RecipeCardProps {
 
 const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
   return (
-    <a href={recipe.url}>
+    <Link href="/selectedRecipe" passHref>
       <div className="min-h-96 w-60 mr-4 ml-4 pb-4 border rounded-xl">
         <Image
           className="rounded-t-xl"
@@ -23,7 +25,7 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
         />
         <label className="mt-4">{recipe.label}</label>
       </div>
-    </a>
+    </Link>
   )
 }
 
