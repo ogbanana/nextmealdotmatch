@@ -1,16 +1,26 @@
 import Link from 'next/link'
 import Router from 'next/router'
-import React, { FC, MouseEvent, useState } from 'react'
 
-import FoodQuestion from '../components/FoodQuestion'
+import { FC, MouseEvent, useState, useEffect, useContext } from 'react'
+
 import Nav from '../components/Nav'
+import FoodQuestion from '../components/FoodQuestion'
 import TimeQuestion from '../components/TimeQuestion'
+
 import data from '../utils/data.json'
 import { formatQuery } from '../utils/helpers'
+
+import { SelectedIngredientsContext } from '../context/state'
 
 const Quiz: FC = () => {
   const [time, setTime] = useState('')
   const [ingredients, setIngredients] = useState([])
+
+  const { userIngredients, setUserIngredients } = useContext(SelectedIngredientsContext)
+
+  useEffect(() => {
+    setUserIngredients(ingredients)
+  }, [ingredients])
 
   const handleTimeOption = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.target as HTMLButtonElement
