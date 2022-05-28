@@ -1,17 +1,37 @@
 import sampleData from '../sampleData.json'
 
-export async function getRecipes(query) {
+export async function getRecipes(foodQuery) {
   if (
     process.env.NEXT_PUBLIC_ENVIRONMENT === 'DEV' &&
     process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'TRUE'
   ) {
     return { hits: sampleData }
   }
-  console.log('THE FINAL QUERY', query)
-  const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${process.env.NEXT_PUBLIC_APP_ID}&app_key=${process.env.NEXT_PUBLIC_APP_KEY}&random=true&field=url&field=label&field=image&imageSize=LARGE&app_id`
+
+  const queryParams = [
+    'random=true',
+    'field=url',
+    'field=label',
+    'field=image',
+    'imageSize=LARGE',
+    'field=ingredientLines',
+    'field=calories',
+    'field=totalTime',
+  ].join('&')
+  console.log(foodQuery, queryParams)
+  //Recipes API: https://developer.edamam.com/edamam-docs-recipe-api#/
+  const url = [
+    'https://api.edamam.com/api/recipes/v2?type=public',
+    `app_id=${process.env.NEXT_PUBLIC_APP_ID}`,
+    `app_key=${process.env.NEXT_PUBLIC_APP_KEY}`,
+    `q=${foodQuery}`,
+    `${queryParams}`,
+  ].join('&')
+
   try {
     const data = await fetch(url)
     const json = await data.json()
+    console.log('JSON', json)
     return json
   } catch (err) {
     console.error(err)

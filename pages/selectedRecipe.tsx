@@ -6,6 +6,13 @@ const SelectedRecipe: FC = () => {
   const { userIngredients } = useContext(SelectedIngredientsContext)
 
   console.log('In SelectedRecipe', userIngredients)
-  return <>YOOO</>
+
+  return (
+    <>
+      {userIngredients.map((ingredient) => {
+        return <span>{ingredient}</span>
+      })}
+    </>
+  )
 }
 export default SelectedRecipe

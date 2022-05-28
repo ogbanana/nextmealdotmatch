@@ -18,6 +18,7 @@ const Quiz: FC = () => {
 
   const handleTimeOption = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.target as HTMLButtonElement
+    console.log(button.value)
     setTime(button.value)
   }
 
