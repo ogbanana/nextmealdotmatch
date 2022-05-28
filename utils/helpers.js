@@ -7,6 +7,7 @@ export async function getRecipes(query) {
   ) {
     return { hits: sampleData }
   }
+  console.log('THE FINAL QUERY', query)
   const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${process.env.NEXT_PUBLIC_APP_ID}&app_key=${process.env.NEXT_PUBLIC_APP_KEY}&random=true&field=url&field=label&field=image&imageSize=LARGE&app_id`
   try {
     const data = await fetch(url)
@@ -17,8 +18,8 @@ export async function getRecipes(query) {
   }
 }
 
-export function formatQuery({ ingredients, time }) {
-  const foodQuery = ingredients.join('&').toLowerCase()
+export function formatQuery({ userIngredients, time }) {
+  const foodQuery = userIngredients.join('&').toLowerCase()
   const timeQuery = `&time=${time.slice(0, 2)}`
   return foodQuery + timeQuery
 }
