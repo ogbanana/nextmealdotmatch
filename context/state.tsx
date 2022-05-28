@@ -1,17 +1,25 @@
-import { FC, createContext, useState } from 'react'
+import { FC, createContext, useState, Dispatch, SetStateAction } from 'react'
+interface UserIngredientsInterface {
+  userIngredients: string[]
+  setUserIngredients: Dispatch<SetStateAction<string[]>>
+}
 
-const SelectedIngredientsContext = createContext()
+const userIngredientsDefaultValue = {
+  userIngredients: [],
+  setUserIngredients: () => {},
+}
+
+const SelectedIngredientsContext = createContext<UserIngredientsInterface>(
+  userIngredientsDefaultValue,
+)
 
 const SelectedIngredientsProvider: FC = ({ children }) => {
-  const [userIngredients, setUserIngredients] = useState([])
+  const [userIngredients, setUserIngredients] = useState(
+    userIngredientsDefaultValue.userIngredients,
+  )
 
   return (
-    <SelectedIngredientsContext.Provider
-      value={{
-        userIngredients,
-        setUserIngredients,
-      }}
-    >
+    <SelectedIngredientsContext.Provider value={{ userIngredients, setUserIngredients }}>
       {children}
     </SelectedIngredientsContext.Provider>
   )

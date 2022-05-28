@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Router from 'next/router'
 
-import { FC, MouseEvent, useState, useEffect, useContext } from 'react'
+import { FC, MouseEvent, useState, useContext } from 'react'
 
 import Nav from '../components/Nav'
 import FoodQuestion from '../components/FoodQuestion'
