@@ -18,7 +18,7 @@ const RecipeSearchBar: FC = () => {
           query: { query },
         })
       }}
-      className="pt-2 mr-20 pr-5"
+      className="pt-2 mr-20 pr-5 flex items-center"
     >
       <input
         name="recipeSearch"

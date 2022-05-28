@@ -15,25 +15,30 @@
 }
 
 #cuttingBoard {
-  @apply w-7/12 h-5/6 bg-cuttingboard-image bg-no-repeat mt-20 bg-cover rounded-3xl justify-center items-center drop-shadow-3xl;
-}
-
-#cuttingBoardOverlay {
-  @apply bg-warmGray-300 bg-opacity-20 rounded-3xl w-full h-full;
+  @apply w-7/12 h-5/6 bg-cuttingboard-image bg-no-repeat mt-20 bg-cover rounded-3xl flex flex-col justify-between items-center drop-shadow-3xl overflow-auto;
 }
 
 #selectedItemsContainer {
-  @apply flex flex-col h-auto w-auto justify-center items-center;
+  @apply flex flex-col h-auto w-full justify-center items-center;
 }
 
 #selectedItem {
-  @apply h-24 w-24 border-0 rounded-xl m-1 flex items-center justify-center  text-teal-100 bg-blueGray-700 hover:bg-blueGray-300 hover:text-teal-700 hover:border hover:border-blueGray-800 drop-shadow-2xl;
+  @apply h-auto w-auto p-2 border-0 rounded-xl m-1 flex items-center justify-center  text-teal-100 bg-blueGray-700 hover:bg-blueGray-300 hover:text-teal-700 hover:border hover:border-blueGray-800 drop-shadow-2xl;
 }
 
 .submitButton {
-  @apply border h-full flex flex-col-reverse pb-14 items-center relative;
+  @apply flex flex-col-reverse pb-14 items-center relative mt-32;
 }
 
 #submitNow {
   @apply w-36 p-2 bg-green-300 rounded-lg hover:bg-green-400 drop-shadow-3xl absolute;
+}
+
+#submitNowDisabled {
+  @apply w-36 p-2 bg-gray-400 cursor-not-allowed rounded-lg  drop-shadow-3xl absolute;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 50px;
+  height: 20px;
 }
