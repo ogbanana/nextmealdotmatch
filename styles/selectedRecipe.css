@@ -1,0 +1,7 @@
+#page {
+  @apply w-auto h-screen;
+}
+
+#selectedRecipeContainer {
+  @apply relative w-auto border-2 border-red-300 m-20;
+}

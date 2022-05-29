@@ -14,7 +14,7 @@ const TimeQuestion = ({ handleTimeOption }) => {
   }
 
   return (
-    <div id={0} className="h-screen w-5/6 flex flex-col justify-center items-center">
+    <div id="0" className="h-screen w-5/6 flex flex-col justify-center items-center">
       <div className="h-auto text-3xl p-8 mb-10 bg-gray-100 bg-opacity-50 border-2 rounded-lg">
         {timeOption.question}
       </div>
