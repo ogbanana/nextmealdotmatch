@@ -35,6 +35,7 @@ export default async function handler(
     const json = await data.json()
     res.send(json)
   } catch (err) {
+    res.send({ error: err, status: 500 })
     console.error(err)
   }
 }
