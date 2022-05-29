@@ -4,6 +4,8 @@ import { FC, useContext, useState } from 'react'
 
 import { SelectedIngredientsContext } from '../context/state'
 
+import Nav from '../components/Nav'
+
 interface Recipe {
   calories: string
   image: string
@@ -31,6 +33,7 @@ const SelectedRecipe: FC = () => {
 
   return (
     <div className="flex flex-col w-screen">
+      <Nav />
       {label}
       <img className="w-1/4" src={image} />
       Calories: {calories}
@@ -43,6 +46,9 @@ const SelectedRecipe: FC = () => {
       </button>
       <button className="w-36 bg-green-400">
         <a href={url}>Go To Recipe</a>
+      </button>
+      <button className="w-36 bg-blue-400">
+        <a href={url}>Text the missing ingredients to your phone!</a>
       </button>
     </div>
   )
