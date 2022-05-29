@@ -49,28 +49,30 @@ const SelectedRecipe: FC = () => {
   }, [recipe])
 
   return (
-    <div className="flex flex-col w-screen">
+    <div id="selectedRecipePage">
       <Nav />
-      {label}
-      <img className="w-1/4" src={image} />
-      Calories: {calories}
-      Total Cooking Time: {totalTime}
-      {combinedIngredients?.map((line, index) => {
-        return (
-          <div key={`${line.ingredienName}_${index}`} className={line.ingredientStyle}>
-            {line.ingredientName}
-          </div>
-        )
-      })}
-      <button className="w-36 bg-red-300" onClick={() => handleClick()}>
-        Show me my missing ingredients!
-      </button>
-      <button className="w-36 bg-green-400">
-        <a href={url}>Go To Recipe</a>
-      </button>
-      <button className="w-36 bg-blue-400">
-        <a href={url}>Text the missing ingredients to your phone!</a>
-      </button>
+      <div id="selectedRecipeContainer">
+        <span>{label}</span>
+        <img className="w-1/4" src={image} />
+        Calories: {calories}
+        Total Cooking Time: {totalTime}
+        {combinedIngredients?.map((line, index) => {
+          return (
+            <div key={`${line.ingredienName}_${index}`} className={line.ingredientStyle}>
+              {line.ingredientName}
+            </div>
+          )
+        })}
+        <button className="w-36 bg-red-300" onClick={() => handleClick()}>
+          Show me my missing ingredients!
+        </button>
+        <button className="w-36 bg-green-400">
+          <a href={url}>Go To Recipe</a>
+        </button>
+        <button className="w-36 bg-blue-400">
+          <a href={url}>Text the missing ingredients to your phone!</a>
+        </button>
+      </div>
     </div>
   )
 }
