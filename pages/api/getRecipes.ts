@@ -1,11 +1,11 @@
 import sampleData from '../../utils/data.json'
 
 export default async function handler(req, res) {
-  const { foodQuery } = req
-
   if (process.env.ENVIRONMENT === 'DEV' && process.env.USE_MOCK_DATA === 'TRUE') {
     return { hits: sampleData }
   }
+
+  const { foodQuery } = req.body
 
   const queryParams = [
     'random=true',

@@ -13,7 +13,11 @@ const Results: FC = () => {
   useEffect(() => {
     const retrieveRecipes = async () => {
       try {
-        const recipies = await fetch('/api/getRecipes', { foodQuery })
+        const recipies = await fetch('/api/getRecipes', {
+          body: JSON.stringify({ foodQuery }),
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        })
         const { hits } = await recipies.json()
         setRecipes(await hits.slice(0, 6))
       } catch (error) {
