@@ -19,20 +19,17 @@ const SelectedRecipe: FC = () => {
   const router = useRouter()
   const recipe = router.query as unknown as Recipe
   let { calories, image, ingredientLines, label, totalTime, url } = recipe
-
+  let { userIngredients } = useContext(SelectedIngredientsContext)
   const [combinedIngredients, setCombinedIngredients] = useState(null)
 
-  let { userIngredients } = useContext(SelectedIngredientsContext)
-
   userIngredients = userIngredients.map((ingredient) => ingredient.toLowerCase())
-
   ingredientLines = ingredientLines?.map((ingredient) => ingredient.toLowerCase())
 
   const handleClick = () => {
     const newIngredients = combinedIngredients.map((item) => {
       userIngredients.forEach((ingredient) => {
         if (!item.ingredientName.includes(ingredient)) {
-          item.ingredientStyle = ' w-1/3 border-2 bg-red-300'
+          item.ingredientStyle = 'w-1/3 border-2 bg-red-300'
         }
       })
       return item
