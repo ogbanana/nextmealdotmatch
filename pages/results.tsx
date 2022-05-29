@@ -15,6 +15,7 @@ const Results: FC = () => {
   useEffect(() => {
     const retrieveRecipes = async () => {
       try {
+        // await fetch('/api/sendTwilioMessage')
         const { hits } = await getRecipes(foodQuery.toString())
         setRecipes(hits.slice(0, 6))
       } catch (error) {
