@@ -1,6 +1,6 @@
 import sampleData from '../sampleData.json'
 
-export async function getRecipes(foodQuery) {
+export async function getRecipes(foodQuery: string) {
   if (
     process.env.NEXT_PUBLIC_ENVIRONMENT === 'DEV' &&
     process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'TRUE'
@@ -18,7 +18,7 @@ export async function getRecipes(foodQuery) {
     'field=calories',
     'field=totalTime',
   ].join('&')
-  console.log(foodQuery, queryParams)
+
   //Recipes API: https://developer.edamam.com/edamam-docs-recipe-api#/
   const url = [
     'https://api.edamam.com/api/recipes/v2?type=public',
@@ -31,14 +31,19 @@ export async function getRecipes(foodQuery) {
   try {
     const data = await fetch(url)
     const json = await data.json()
-    console.log('JSON', json)
     return json
   } catch (err) {
     console.error(err)
   }
 }
 
-export function formatQuery({ userIngredients, time }) {
+export function formatQuery({
+  userIngredients,
+  time,
+}: {
+  userIngredients: string[]
+  time: string
+}) {
   const foodQuery = userIngredients.join('&').toLowerCase()
   const timeQuery = `&time=${time.slice(0, 2)}`
   return foodQuery + timeQuery

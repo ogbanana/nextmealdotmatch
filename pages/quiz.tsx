@@ -18,7 +18,6 @@ const Quiz: FC = () => {
 
   const handleTimeOption = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.target as HTMLButtonElement
-    console.log(button.value)
     setTime(button.value)
   }
 
@@ -42,11 +41,11 @@ const Quiz: FC = () => {
     if (!time) throw new Error('Please select a time!')
     if (userIngredients.length < 1) throw new Error('Please adds some ingredients')
 
-    const query = formatQuery({ userIngredients, time })
+    const foodQuery = formatQuery({ userIngredients, time })
 
     Router.push({
       pathname: '/results',
-      query: { query },
+      query: { foodQuery },
     })
   }
 

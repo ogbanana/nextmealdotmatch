@@ -1,26 +1,28 @@
 import { useRouter } from 'next/router'
+
 import React, { FC, useEffect, useState } from 'react'
 
 import Nav from '../components/Nav'
 import RecipeCard from '../components/RecipeCard'
+
 import { getRecipes } from '../utils/helpers'
 
 const Results: FC = () => {
   const router = useRouter()
-  const { query } = router.query
+  const { foodQuery } = router.query
   const [recipes, setRecipes] = useState([])
 
   useEffect(() => {
     const retrieveRecipes = async () => {
       try {
-        const { hits } = await getRecipes(query)
+        const { hits } = await getRecipes(foodQuery.toString())
         setRecipes(hits.slice(0, 6))
       } catch (error) {
         console.error(error)
       }
     }
     retrieveRecipes()
-  }, [query])
+  }, [foodQuery])
 
   return (
     <>
