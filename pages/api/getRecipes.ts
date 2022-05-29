@@ -1,6 +1,9 @@
 import sampleData from '../../utils/data.json'
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: { body: { foodQuery: string } },
+  res: { send: (arg0: any) => void },
+) {
   if (process.env.ENVIRONMENT === 'DEV' && process.env.USE_MOCK_DATA === 'TRUE') {
     return { hits: sampleData }
   }
