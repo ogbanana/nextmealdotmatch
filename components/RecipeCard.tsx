@@ -1,3 +1,4 @@
+import Router from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -12,8 +13,15 @@ interface RecipeCardProps {
 }
 
 const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
+  const handleClick = () => {
+    Router.push({
+      pathname: '/selectedRecipe',
+      query: recipe,
+    })
+  }
+
   return (
-    <Link href="/selectedRecipe" passHref>
+    <button onClick={() => handleClick()}>
       <div className="flex flex-col h-96 w-96 mr-4 ml-4 pb-4 border rounded-xl">
         <Image
           className="rounded-t-xl"
@@ -26,7 +34,7 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
 
         <label className="mt-4 p-2 ">{recipe.label}</label>
       </div>
-    </Link>
+    </button>
   )
 }
 

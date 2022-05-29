@@ -10,12 +10,13 @@ const RecipeSearchBar: FC = () => {
         event.preventDefault()
 
         const formData = new FormData(event.currentTarget)
-        const recipeSearch = formData.get('recipeSearch')
-        const query = formatQuery({ userIngredients: [recipeSearch], time: '60 Minutes' })
+        const recipeSearch = formData.get('recipeSearch').toString()
+
+        const foodQuery = formatQuery({ userIngredients: [recipeSearch], time: '60 Minutes' })
 
         Router.push({
           pathname: '/results',
-          query: { query },
+          query: { foodQuery },
         })
       }}
       className="pt-2 mr-20 pr-5 flex items-center"
