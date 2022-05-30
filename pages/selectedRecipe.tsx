@@ -36,7 +36,7 @@ const SelectedRecipe: FC = () => {
   userIngredients = userIngredients.map((ingredient) => ingredient.toLowerCase())
   ingredientLines = ingredientLines?.map((ingredient) => ingredient.toLowerCase())
 
-  const handleClick = () => {
+  const handleMissingIngredientsButton = () => {
     const updatedIngredientsObj = ingredientsRenderData.map(
       (recipeIngredientObj: IngredientRender) => {
         const ingredientFound = userIngredients.find((item) =>
@@ -100,8 +100,8 @@ const SelectedRecipe: FC = () => {
           <div id="selectedRecipeButtonsContainer">
             <div>
               <button
-                className="selectedRecipeButtons bg-red-300 hover:bg-red-400"
-                onClick={() => handleClick()}
+                className="selectedRecipeButtons bg-red-300 hover:bg-red-400 active:bg-red-400"
+                onClick={() => handleMissingIngredientsButton()}
               >
                 Show me my missing ingredients!
               </button>
