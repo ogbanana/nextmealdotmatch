@@ -29,7 +29,7 @@
     ]
   },
   {
-    "question": "What grain(s) and pasta do you have?'",
+    "question": "What grain(s) and pasta do you have?",
     "options": ["Rice", "Quinoa", "Couscous", "Spaghetti", "Ramen"]
   }
 ]

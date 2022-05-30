@@ -1,12 +1,12 @@
 export function formatQuery({
   userIngredients,
-  time,
+  userTime,
 }: {
   userIngredients: string[]
-  time: string
+  userTime: string
 }) {
   const foodQuery = userIngredients.join('&').toLowerCase()
-  const timeQuery = `&time=${time.slice(0, 2)}`
+  const timeQuery = `&time=${userTime.slice(0, 2)}`
   return foodQuery + timeQuery
 }
 

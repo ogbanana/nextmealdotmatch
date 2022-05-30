@@ -13,16 +13,17 @@ import { formatQuery } from '../utils/helpers'
 import { SelectedIngredientsContext } from '../context/state'
 
 const Quiz: FC = () => {
-  const [time, setTime] = useState('')
-  const { userIngredients, setUserIngredients } = useContext(SelectedIngredientsContext)
+  const { userIngredients, setUserIngredients, userTime, setUserTime } = useContext(
+    SelectedIngredientsContext,
+  )
 
   const handleTimeOption = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.target as HTMLButtonElement
-    setTime(button.value)
+    setUserTime(button.value)
   }
 
   const deselectTime = () => {
-    setTime('')
+    setUserTime('')
   }
 
   const handleIngredientOption = (event: MouseEvent<HTMLButtonElement>) => {
@@ -38,15 +39,20 @@ const Quiz: FC = () => {
   }
 
   const handleSubmit = async () => {
-    if (!time) throw new Error('Please select a time!')
+    if (!userTime) throw new Error('Please select a time!')
     if (userIngredients.length < 1) throw new Error('Please adds some ingredients')
 
-    const foodQuery = formatQuery({ userIngredients, time })
+    const foodQuery = formatQuery({ userIngredients, userTime })
 
     Router.push({
       pathname: '/results',
       query: { foodQuery },
     })
+  }
+
+  const clearBoard = () => {
+    setUserIngredients([])
+    setUserTime('')
   }
 
   return (
@@ -60,13 +66,13 @@ const Quiz: FC = () => {
               <div id="cuttingBoard" className="scrollbar">
                 <div id="selectedItemsContainers">
                   <div className="text-lg mt-4 mb-4 flex flex-col items-center justify-center w-full">
-                    {time && (
+                    {userTime && (
                       <button
                         onClick={deselectTime}
                         type="button"
                         className="bg-gray-200 bg-opacity-80 border-2 p-2 rounded-lg"
                       >
-                        Selected Time: {time}
+                        Selected Time: {userTime}
                       </button>
                     )}
                     <div className="w-5/6 h-full flex items-center justify-center mt-8">
@@ -90,11 +96,14 @@ const Quiz: FC = () => {
                 </div>
                 <div className="submitButton">
                   <button
-                    disabled={!time}
-                    id={!time ? 'submitNowDisabled' : 'submitNow'}
+                    disabled={!userTime}
+                    id={!userTime ? 'submitNowDisabled' : 'submitNow'}
                     onClick={handleSubmit}
                   >
                     Submit Now
+                  </button>
+                  <button onClick={clearBoard} id="clearBoardButton" type="button">
+                    Clear Board
                   </button>
                 </div>
               </div>
@@ -111,6 +120,7 @@ const Quiz: FC = () => {
                     length={data.length - 1}
                     handleIngredientOption={handleIngredientOption}
                     handleSubmit={handleSubmit}
+                    submitIsDisabled={!userTime}
                   />
                 )
               })}

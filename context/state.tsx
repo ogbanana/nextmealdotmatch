@@ -2,11 +2,15 @@ import { FC, createContext, useState, Dispatch, SetStateAction } from 'react'
 interface UserIngredientsInterface {
   userIngredients: string[]
   setUserIngredients: Dispatch<SetStateAction<string[]>>
+  userTime: string
+  setUserTime: Dispatch<SetStateAction<string>>
 }
 
 const userIngredientsDefaultValue = {
   userIngredients: [],
   setUserIngredients: () => {},
+  userTime: '',
+  setUserTime: () => {},
 }
 
 const SelectedIngredientsContext = createContext<UserIngredientsInterface>(
@@ -18,8 +22,12 @@ const SelectedIngredientsProvider: FC = ({ children }) => {
     userIngredientsDefaultValue.userIngredients,
   )
 
+  const [userTime, setUserTime] = useState(userIngredientsDefaultValue.userTime)
+
   return (
-    <SelectedIngredientsContext.Provider value={{ userIngredients, setUserIngredients }}>
+    <SelectedIngredientsContext.Provider
+      value={{ userIngredients, setUserIngredients, userTime, setUserTime }}
+    >
       {children}
     </SelectedIngredientsContext.Provider>
   )
