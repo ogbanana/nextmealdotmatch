@@ -44,7 +44,6 @@ const RecipeSearchBar: FC<Props> = ({
 
           const formData = new FormData(event.currentTarget)
           const recipeSearch = formData.get('recipeSearch').toString()
-
           const foodQuery = formatQuery({ userIngredients: [recipeSearch], userTime: '60 Minutes' })
 
           Router.push({
@@ -52,7 +51,7 @@ const RecipeSearchBar: FC<Props> = ({
             query: { foodQuery },
           })
         }}
-        className="md:pt-2 md:justify-center md:pr-5 flex md:items-center md:mr-20 w-full items-start justify-start"
+        id="searchBarContainer"
       >
         <div className="flex items-start md:items-center md:flex-row flex-col">
           <input

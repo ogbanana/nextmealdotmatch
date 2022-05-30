@@ -1,5 +1,5 @@
 #twilioInputContainer {
-  @apply flex flex-col pl-2 pr-2 cursor-pointer;
+  @apply flex flex-col pl-2;
 }
 
 #phoneNumberInput {
@@ -11,7 +11,7 @@
 }
 
 #successText {
-  @apply text-sm mt-2 text-green-800 pl-2;
+  @apply text-sm mt-2 text-green-500 pl-2;
 }
 
 #sendTextButton {
