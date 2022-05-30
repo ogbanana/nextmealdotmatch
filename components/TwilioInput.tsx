@@ -20,7 +20,6 @@ const TwilioInput: FC<Props> = ({ missingIngredients }) => {
       return
     }
 
-    console.log(formattedPhoneNumber.length)
     if (formattedPhoneNumber.length < 14) {
       setFormatError('Please include 9 digits')
       setPhoneNumber(formattedPhoneNumber)
@@ -51,13 +50,7 @@ const TwilioInput: FC<Props> = ({ missingIngredients }) => {
       headers: { 'Content-Type': 'application/json' },
     })
 
-    if (status === 500) {
-      setSendMessageStatus(500)
-    }
-
-    if (status === 200) {
-      setSendMessageStatus(200)
-    }
+    setSendMessageStatus(status)
   }
 
   let statusText = ''
@@ -66,7 +59,7 @@ const TwilioInput: FC<Props> = ({ missingIngredients }) => {
   } else if (sendMessageStatus === 500) {
     statusText = 'The message was not sent'
   }
-  console.log(phoneFormatError)
+
   return (
     <div className="flex flex-col ">
       <input
