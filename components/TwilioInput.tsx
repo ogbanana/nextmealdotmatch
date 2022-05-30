@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react'
 import { formatPhoneNumber, removePhoneCharacters } from '../utils/helpers'
 import { IngredientRender } from '../pages/selectedRecipe'
 
+import Expire from './Expire'
+
 interface Props {
   missingIngredients: IngredientRender[]
 }
@@ -11,7 +13,7 @@ const TwilioInput: FC<Props> = ({ missingIngredients }) => {
   const [sendMessageStatus, setSendMessageStatus] = useState<number | null>(null)
   const [phoneFormatError, setFormatError] = useState<boolean | string | undefined>(false)
 
-  const handleInput = (event) => {
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const formattedPhoneNumber = formatPhoneNumber(event.target.value)
 
     if (!formattedPhoneNumber || formattedPhoneNumber.length === 0) {
@@ -21,7 +23,7 @@ const TwilioInput: FC<Props> = ({ missingIngredients }) => {
     }
 
     if (formattedPhoneNumber.length < 14) {
-      setFormatError('Please include 9 digits')
+      setFormatError('Please include 10 digits')
       setPhoneNumber(formattedPhoneNumber)
       return
     }
@@ -61,9 +63,9 @@ const TwilioInput: FC<Props> = ({ missingIngredients }) => {
   }
 
   return (
-    <div className="flex flex-col ">
+    <div id="twilioInputContainer">
       <input
-        className="h-10 rounded-lg border pl-2 m-2  "
+        id="phoneNumberInput"
         type="tel"
         pattern="[+]{1}[0-9]{11,14}"
         placeholder="555 555-5555"
@@ -71,28 +73,20 @@ const TwilioInput: FC<Props> = ({ missingIngredients }) => {
         onChange={(event) => handleInput(event)}
         value={phoneNumber}
       ></input>
-      {}
-
-      <label className={phoneFormatError ? 'text-sm pl-2 mt-2 text-red-500' : ''}>
-        {phoneFormatError}
-      </label>
+      <label id={phoneFormatError ? 'errorText' : ''}>{phoneFormatError}</label>
       <button
+        id="sendTextButton"
+        type="button"
         disabled={phoneFormatError ? true : false}
         onClick={sendText}
-        className="border p-1 h-10 rounded-lg bg-green-300 ml-2 mb-2 md:mb-0 hover:bg-green-400"
-        type="button"
       >
         Text me!
       </button>
-      <label
-        className={
-          sendMessageStatus === 200
-            ? 'text-sm pl-2 mt-2 text-green-500'
-            : 'text-sm pl-2 mt-2 text-red-500'
-        }
-      >
-        {statusText}
-      </label>
+      {sendMessageStatus && (
+        <Expire setSendMessageStatus={setSendMessageStatus} delay={5000}>
+          <label id={sendMessageStatus === 200 ? 'successText' : 'errorText'}>{statusText}</label>
+        </Expire>
+      )}
     </div>
   )
 }

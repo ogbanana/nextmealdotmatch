@@ -31,9 +31,9 @@ const Results: FC = () => {
   return (
     <>
       <Nav />
-      <div className=" h-full min-h-screen bg-basil-image bg-cover bg-no-repeat">
-        <div className="h-full min-h-screen  bg-warmGray-200 bg-opacity-70 flex justify-center">
-          <div className="h-full  w-4/5 flex flex-wrap items-center justify-center pt-6 md:mt-28 mt-44">
+      <div id="resultsContainer">
+        <div id="resultsInnerContainer">
+          <div id="recipesContainer">
             {recipes?.length
               ? recipes.map((current) => {
                   return (
