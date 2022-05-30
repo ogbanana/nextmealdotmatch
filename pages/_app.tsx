@@ -8,6 +8,8 @@ import '../styles/homePage.css'
 import '../styles/nav.css'
 import '../styles/quiz.css'
 import '../styles/selectedRecipe.css'
+import '../styles/twilioInput.css'
+import '../styles/results.css'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

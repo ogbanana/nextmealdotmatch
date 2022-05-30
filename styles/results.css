@@ -1,0 +1,11 @@
+#resultsContainer {
+  @apply h-full min-h-screen bg-basil-image bg-cover bg-no-repeat;
+}
+
+#resultsInnerContainer {
+  @apply h-full min-h-screen  bg-warmGray-200 bg-opacity-70 flex justify-center;
+}
+
+#recipesContainer {
+  @apply h-full  w-4/5 flex flex-wrap items-center justify-center pt-6 md:mt-28 mt-44;
+}

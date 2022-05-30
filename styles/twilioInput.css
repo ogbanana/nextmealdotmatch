@@ -1,0 +1,19 @@
+#twilioInputContainer {
+  @apply flex flex-col pl-2;
+}
+
+#phoneNumberInput {
+  @apply h-10 rounded-lg border m-2 p-4;
+}
+
+#errorText {
+  @apply text-sm text-red-500 pl-2;
+}
+
+#successText {
+  @apply text-sm mt-2 text-green-500 pl-2;
+}
+
+#sendTextButton {
+  @apply border p-1 h-10 rounded-lg bg-green-300 ml-2 mt-2 mb-2 md:mb-0 hover:bg-green-400;
+}
