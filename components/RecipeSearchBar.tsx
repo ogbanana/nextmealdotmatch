@@ -45,7 +45,7 @@ const RecipeSearchBar: FC<Props> = ({
           const formData = new FormData(event.currentTarget)
           const recipeSearch = formData.get('recipeSearch').toString()
 
-          const foodQuery = formatQuery({ userIngredients: [recipeSearch], time: '60 Minutes' })
+          const foodQuery = formatQuery({ userIngredients: [recipeSearch], userTime: '60 Minutes' })
 
           Router.push({
             pathname: '/results',
