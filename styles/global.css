@@ -7,7 +7,3 @@ h1 {
   font-family: 'Arima Madurai', cursive;
   @apply text-blueGray-800 text-5xl;
 }
-
-button {
-  @apply border-2;
-}

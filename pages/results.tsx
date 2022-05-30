@@ -33,11 +33,14 @@ const Results: FC = () => {
       <Nav />
       <div className=" h-full min-h-screen bg-basil-image bg-cover bg-no-repeat">
         <div className="h-full min-h-screen  bg-warmGray-200 bg-opacity-70 flex justify-center">
-          <div className="h-full flex flex-wrap items-center justify-center pt-6 mt-24">
+          <div className="h-full  w-4/5 flex flex-wrap items-center justify-center pt-6 md:mt-28 mt-44">
             {recipes?.length
               ? recipes.map((current) => {
                   return (
-                    <div className="mb-16" key={current.recipe.label}>
+                    <div
+                      className="mb-16 recipeList:basis-1/3 recipeList:w-1/3 flex justify-center sm:basis-full sm:w-full"
+                      key={current.recipe.label}
+                    >
                       <RecipeCard recipe={current.recipe} />
                     </div>
                   )

@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   mode: 'jit',
@@ -23,6 +24,10 @@ module.exports = {
       },
       dropShadow: {
         '3xl': '0 35px 35px rgba(0, 0, 0, 0.30)',
+      },
+      screens: {
+        recipeList: '1400px',
+        ...defaultTheme.screens,
       },
     },
   },
