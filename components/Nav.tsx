@@ -5,23 +5,30 @@ import { FC, useState } from 'react'
 import RecipeSearchBar from './RecipeSearchBar'
 
 const Nav: FC = () => {
-  const [hamburgerMenuButtonWasClicked, setHamburgerMenuButtonWasClicked] = useState(true)
+  const [hamburgerMenuButtonWasClicked, setHamburgerMenuButtonWasClicked] = useState(false)
 
   function toggleSearchBar() {
     setHamburgerMenuButtonWasClicked(!hamburgerMenuButtonWasClicked)
   }
 
   return (
-    <nav className="w-full flex flex-col md:flex-row sm:items-center justify-between border-b absolute top-0 z-50 bg-opacity-50 bg-gray-100">
-      <div className="flex w-full">
+    <nav id="navContainer">
+      <div id="menuContainer">
         <Link href="/" passHref>
-          <div className="text-4xl p-4 text-center cursor-pointer md:ml-20 ">
+          <div id="logoContainer">
             <h1>Meal.Match</h1>
           </div>
         </Link>
-        <button onClick={toggleSearchBar} className="md:hidden w-full" type="button">
-          <Image src="/menu-icon.png" alt="Picture of the author" width={30} height={30} />
-        </button>
+        <div id="hamburgerMenu">
+          <button onClick={toggleSearchBar} type="button">
+            <Image
+              src="/images/menu-icon.png"
+              alt="Picture of the hamburger menu"
+              width={30}
+              height={30}
+            />
+          </button>
+        </div>
       </div>
       <RecipeSearchBar
         hamburgerMenuButtonWasClicked={hamburgerMenuButtonWasClicked}
