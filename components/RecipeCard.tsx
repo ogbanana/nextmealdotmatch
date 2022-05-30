@@ -29,6 +29,7 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
           height={400}
           width={400}
           loader={() => recipe.image}
+          unoptimized={true}
         />
         <label className="mt-4 p-2 cursor-pointer">{recipe.label}</label>
       </div>
