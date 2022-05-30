@@ -1,0 +1,23 @@
+#homePageContainer {
+  @apply w-screen h-screen flex justify-center items-center bg-homepage-full bg-no-repeat bg-cover lg:justify-end lg:items-center;
+}
+
+#homePageTextBox {
+  @apply h-4/6 p-10 bg-white bg-opacity-80 lg:mt-28 lg:w-6/12 flex lg:pr-48 flex-col lg:bg-transparent;
+}
+
+#homePageTitle {
+  @apply flex text-center justify-center text-3xl lg:text-5xl mb-2 text-green-800;
+}
+
+#homePageDescription {
+  @apply text-center mb-10 text-lg;
+}
+
+#homePageButtonContainer {
+  @apply flex flex-col items-center justify-center md:flex-row;
+}
+
+.homePageButton {
+  @apply bg-green-300 p-4 rounded-lg drop-shadow-lg;
+}

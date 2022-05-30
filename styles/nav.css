@@ -1,5 +1,5 @@
 #navContainer {
-  @apply w-screen flex flex-col justify-between border-b absolute top-0 z-50 bg-opacity-70 bg-gray-100 md:flex-row;
+  @apply w-screen flex flex-col justify-between border-b absolute top-0 z-50 lg:bg-opacity-70 bg-gray-100 md:flex-row;
 }
 
 #menuContainer {
