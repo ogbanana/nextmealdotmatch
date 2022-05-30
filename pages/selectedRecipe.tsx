@@ -20,58 +20,83 @@ const SelectedRecipe: FC = () => {
   const recipe = router.query as unknown as Recipe
   let { calories, image, ingredientLines, label, totalTime, url } = recipe
   let { userIngredients } = useContext(SelectedIngredientsContext)
-  const [combinedIngredients, setCombinedIngredients] = useState(null)
+  const [ingredientsRenderData, setingredientsRenderData] = useState(null)
 
   userIngredients = userIngredients.map((ingredient) => ingredient.toLowerCase())
   ingredientLines = ingredientLines?.map((ingredient) => ingredient.toLowerCase())
 
   const handleClick = () => {
-    const newIngredients = combinedIngredients.map((item) => {
-      userIngredients.forEach((ingredient) => {
-        if (!item.ingredientName.includes(ingredient)) {
-          item.ingredientStyle = 'w-1/3 border-2 bg-red-300'
-        }
-      })
-      return item
+    const updatedIngredientsObj = ingredientsRenderData.map((recipeIngredientObj) => {
+      const ingredientFound = userIngredients.find((item) =>
+        recipeIngredientObj.ingredientName.includes(item),
+      )
+
+      if (!ingredientFound) {
+        recipeIngredientObj.ingredientContainerStyle = 'p-2 m-1 w-96 rounded-xl bg-red-300'
+      }
+
+      return recipeIngredientObj
     })
 
-    setCombinedIngredients(newIngredients)
+    setingredientsRenderData(updatedIngredientsObj)
   }
 
   useEffect(() => {
-    const test = ingredientLines?.map((line) => {
+    const ingredientsRenderObject = ingredientLines?.map((line) => {
       return {
         ingredientName: line.toLowerCase(),
-        ingredientStyle: 'w-1/3 border-2 border-red-300',
+        ingredientContainerStyle: 'p-2 m-1 w-96',
       }
     })
-    setCombinedIngredients(test)
+    setingredientsRenderData(ingredientsRenderObject)
   }, [recipe])
 
   return (
     <div id="selectedRecipePage">
       <Nav />
       <div id="selectedRecipeContainer">
-        <span>{label}</span>
-        <img className="w-1/4" src={image} />
-        Calories: {calories}
-        Total Cooking Time: {totalTime}
-        {combinedIngredients?.map((line, index) => {
-          return (
-            <div key={`${line.ingredienName}_${index}`} className={line.ingredientStyle}>
-              {line.ingredientName}
+        <div id="selectedRecipeInfoPanel">
+          <a href={url} target="blank">
+            <h1>{label}</h1>
+          </a>
+          <a href={url} target="blank">
+            <img className="w-full" src={image} />
+          </a>
+          <label>Calories</label>
+          <p>{calories}</p>
+          <label>Total Cooking Time</label>
+          <p>{totalTime}</p>
+        </div>
+
+        <div id="selectedRecipeIngredientsPanel">
+          <div id="selectedRecipeIngredients">
+            {ingredientsRenderData?.map((line, index) => {
+              return (
+                <div
+                  key={`${line.ingredienName}_${index}`}
+                  className={line.ingredientContainerStyle}
+                >
+                  • {line.ingredientName}
+                </div>
+              )
+            })}
+          </div>
+          <div id="selectedRecipeButtonsContainer">
+            <div>
+              <button
+                className="selectedRecipeButtons bg-red-300 hover:bg-red-400"
+                onClick={() => handleClick()}
+              >
+                Show me my missing ingredients!
+              </button>
             </div>
-          )
-        })}
-        <button className="w-36 bg-red-300" onClick={() => handleClick()}>
-          Show me my missing ingredients!
-        </button>
-        <button className="w-36 bg-green-400">
-          <a href={url}>Go To Recipe</a>
-        </button>
-        <button className="w-36 bg-blue-400">
-          <a href={url}>Text the missing ingredients to your phone!</a>
-        </button>
+            <div>
+              <button className="selectedRecipeButtons bg-blue-300 hover:bg-blue-400">
+                <a href={url}>Text the missing ingredients to your phone!</a>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -1,7 +1,43 @@
-#page {
-  @apply w-auto h-screen;
+#selectedRecipePage {
+  @apply w-screen h-screen flex items-center justify-center bg-recipe-image bg-cover;
 }
 
 #selectedRecipeContainer {
-  @apply relative w-auto border-2 border-red-300 m-20;
+  @apply relative w-5/6 h-auto mt-20 flex border-white bg-white bg-opacity-90 rounded-xl font-normal;
+}
+
+#selectedRecipeInfoPanel {
+  @apply flex flex-col w-auto p-10;
+}
+
+#selectedRecipeInfoPanel h1 {
+  @apply font-extrabold text-green-800 hover:text-green-600 text-3xl;
+}
+
+#selectedRecipeInfoPanel label {
+  @apply text-xl font-semibold text-green-800;
+}
+
+#selectedRecipeInfoPanel p {
+  @apply text-lg font-normal;
+}
+
+#selectedRecipeInfoPanel img {
+  @apply rounded-2xl mt-5 mb-5;
+}
+
+#selectedRecipeIngredientsPanel {
+  @apply w-full flex flex-row justify-evenly items-center;
+}
+
+#selectedRecipeIngredients {
+  @apply w-1/2 h-full flex flex-col items-center justify-center;
+}
+
+#selectedRecipeButtonsContainer {
+  @apply flex flex-col items-center;
+}
+
+.selectedRecipeButtons {
+  @apply w-60 rounded-xl p-2 m-4;
 }
