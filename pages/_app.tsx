@@ -1,4 +1,6 @@
 import type { AppProps } from 'next/app'
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { SelectedIngredientsProvider } from '../context/state'
 
@@ -11,11 +13,16 @@ import '../styles/selectedRecipe.css'
 import '../styles/twilioInput.css'
 import '../styles/results.css'
 
+const queryClient = new QueryClient()
+
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <SelectedIngredientsProvider>
-      <Component {...pageProps} />
-    </SelectedIngredientsProvider>
+    <QueryClientProvider client={queryClient}>
+      <SelectedIngredientsProvider>
+        <Component {...pageProps} />
+      </SelectedIngredientsProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   )
 }
 

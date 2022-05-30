@@ -7,7 +7,14 @@ const Option = (props) => (
   />
 )
 
-const FoodQuestion = ({ id, data, length, handleIngredientOption, handleSubmit }) => {
+const FoodQuestion = ({
+  id,
+  data,
+  length,
+  handleIngredientOption,
+  handleSubmit,
+  submitIsDisabled,
+}) => {
   return (
     <div id={id} className="h-screen w-5/6 flex flex-col justify-center items-center">
       <div className="h-auto text-4xl font-bold p-8 mb-10 bg-gray-100 bg-opacity-50 border-2 rounded-lg">
@@ -38,7 +45,12 @@ const FoodQuestion = ({ id, data, length, handleIngredientOption, handleSubmit }
           </Link>
         ) : (
           <button
-            className="w-32 h-12 pl-4 pr-4 m-1 bg-green-300 rounded-lg hover:bg-green-300 drop-shadow-3xl"
+            disabled={submitIsDisabled}
+            className={
+              submitIsDisabled
+                ? 'w-32 h-12 pl-4 pr-4 m-1 bg-gray-300 rounded-lg cursor-not-allowed'
+                : 'w-32 h-12 pl-4 pr-4 m-1 bg-green-300 rounded-lg hover:bg-green-300 drop-shadow-3xl'
+            }
             onClick={handleSubmit}
           >
             Done &#10003;

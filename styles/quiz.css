@@ -27,17 +27,20 @@
 }
 
 .submitButton {
-  @apply flex flex-col-reverse pb-14 items-center relative mt-32;
+  @apply flex flex-col md:flex-row w-full pb-14 items-center justify-around relative mt-32;
 }
 
 #submitNow {
-  @apply w-36 p-2 bg-green-300 rounded-lg hover:bg-green-400 drop-shadow-3xl absolute;
+  @apply w-36 p-2 bg-green-300 rounded-lg hover:bg-green-400 drop-shadow-3xl;
 }
 
 #submitNowDisabled {
-  @apply w-36 p-2 bg-gray-400 cursor-not-allowed rounded-lg  drop-shadow-3xl absolute;
+  @apply w-36 p-2 bg-gray-400 cursor-not-allowed rounded-lg  drop-shadow-3xl;
 }
 
+#clearBoardButton {
+  @apply w-36 p-2 bg-red-500 rounded-lg  drop-shadow-3xl hover:bg-red-600;
+}
 .scrollbar::-webkit-scrollbar {
   width: 50px;
   height: 20px;
