@@ -83,7 +83,7 @@ const TwilioInput: FC<Props> = ({ missingIngredients }) => {
         Text me!
       </button>
       {sendMessageStatus && (
-        <Expire setSendMessageStatus={setSendMessageStatus} delay={5000}>
+        <Expire setSendMessageStatus={setSendMessageStatus} delay={3000}>
           <label id={sendMessageStatus === 200 ? 'successText' : 'errorText'}>{statusText}</label>
         </Expire>
       )}

@@ -39,5 +39,5 @@
 }
 
 .selectedRecipeButtons {
-  @apply w-64 h-auto rounded-xl p-2 m-4;
+  @apply w-64 h-auto rounded-xl p-4 m-4;
 }
