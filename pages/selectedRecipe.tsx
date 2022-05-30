@@ -32,6 +32,7 @@ const SelectedRecipe: FC = () => {
   )
   const [showTextButton, setShowTextButton] = useState(false)
   const [showTwilioInput, setShowTwilioInput] = useState(false)
+  const [highlightIngredients, setHighlightIngredients] = useState(true)
 
   userIngredients = userIngredients.map((ingredient) => ingredient.toLowerCase())
   ingredientLines = ingredientLines?.map((ingredient) => ingredient.toLowerCase())
@@ -43,9 +44,15 @@ const SelectedRecipe: FC = () => {
           recipeIngredientObj.ingredientName.includes(item),
         )
 
-        if (!ingredientFound) {
+        if (!highlightIngredients) {
+          recipeIngredientObj.ingredientContainerStyle = 'p-2 m-1 w-96'
+          setHighlightIngredients(true)
+        }
+
+        if (!ingredientFound && highlightIngredients) {
           recipeIngredientObj.ingredientContainerStyle = 'p-2 m-1 w-96 rounded-xl bg-red-300'
           recipeIngredientObj.isMissing = true
+          setHighlightIngredients(false)
         }
 
         return recipeIngredientObj
@@ -100,7 +107,7 @@ const SelectedRecipe: FC = () => {
           <div id="selectedRecipeButtonsContainer">
             <div>
               <button
-                className="selectedRecipeButtons bg-red-300 hover:bg-red-400 active:bg-red-400"
+                className="selectedRecipeButtons bg-red-200 hover:bg-red-300 active:bg-red-400 focus:bg-red-400 focus:outline-none focus:ring focus:ring-red-300"
                 onClick={() => handleMissingIngredientsButton()}
               >
                 Show me my missing ingredients!
@@ -109,18 +116,18 @@ const SelectedRecipe: FC = () => {
             <div>
               {showTextButton && (
                 <button
-                  onClick={() => setShowTwilioInput(!showTwilioInput)}
                   className="selectedRecipeButtons bg-blue-300 hover:bg-blue-400"
+                  onClick={() => setShowTwilioInput(!showTwilioInput)}
                 >
                   Text the missing ingredients to your phone!
-                </button>
-              )}
-              {showTwilioInput && (
-                <TwilioInput
-                  missingIngredients={ingredientsRenderData.filter(
-                    (item) => item.isMissing === true,
+                  {showTwilioInput && (
+                    <TwilioInput
+                      missingIngredients={ingredientsRenderData.filter(
+                        (item) => item.isMissing === true,
+                      )}
+                    />
                   )}
-                />
+                </button>
               )}
             </div>
           </div>
