@@ -6,12 +6,15 @@ import { SelectedIngredientsProvider } from '../context/state'
 
 import 'tailwindcss/tailwind.css'
 import '../styles/global.css'
-import '../styles/homePage.css'
-import '../styles/nav.css'
-import '../styles/quiz.css'
-import '../styles/selectedRecipe.css'
-import '../styles/twilioInput.css'
-import '../styles/results.css'
+
+import '../styles/pageStyles/homePage.css'
+import '../styles/pageStyles/quiz.css'
+import '../styles/pageStyles/results.css'
+import '../styles/pageStyles/selectedRecipe.css'
+
+import '../styles/componentStyles/nav.css'
+import '../styles/componentStyles/twilioInput.css'
+import '../styles/componentStyles/recipeSearchBar.css'
 
 const queryClient = new QueryClient()
 
