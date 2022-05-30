@@ -5,6 +5,7 @@ import { FC, useContext, useEffect, useState } from 'react'
 import { SelectedIngredientsContext } from '../context/state'
 
 import Nav from '../components/Nav'
+import TwilioInput from '../components/TwilioInput'
 
 interface Recipe {
   calories: string
@@ -15,30 +16,44 @@ interface Recipe {
   url: string
 }
 
+export interface IngredientRender {
+  ingredientName: string
+  ingredientContainerStyle: string
+  isMissing: boolean
+}
+
 const SelectedRecipe: FC = () => {
   const router = useRouter()
   const recipe = router.query as unknown as Recipe
   let { calories, image, ingredientLines, label, totalTime, url } = recipe
   let { userIngredients } = useContext(SelectedIngredientsContext)
-  const [ingredientsRenderData, setingredientsRenderData] = useState(null)
+  const [ingredientsRenderData, setingredientsRenderData] = useState<null | IngredientRender[]>(
+    null,
+  )
+  const [showTextButton, setShowTextButton] = useState(false)
+  const [showTwilioInput, setShowTwilioInput] = useState(false)
 
   userIngredients = userIngredients.map((ingredient) => ingredient.toLowerCase())
   ingredientLines = ingredientLines?.map((ingredient) => ingredient.toLowerCase())
 
   const handleClick = () => {
-    const updatedIngredientsObj = ingredientsRenderData.map((recipeIngredientObj) => {
-      const ingredientFound = userIngredients.find((item) =>
-        recipeIngredientObj.ingredientName.includes(item),
-      )
+    const updatedIngredientsObj = ingredientsRenderData.map(
+      (recipeIngredientObj: IngredientRender) => {
+        const ingredientFound = userIngredients.find((item) =>
+          recipeIngredientObj.ingredientName.includes(item),
+        )
 
-      if (!ingredientFound) {
-        recipeIngredientObj.ingredientContainerStyle = 'p-2 m-1 w-96 rounded-xl bg-red-300'
-      }
+        if (!ingredientFound) {
+          recipeIngredientObj.ingredientContainerStyle = 'p-2 m-1 w-96 rounded-xl bg-red-300'
+          recipeIngredientObj.isMissing = true
+        }
 
-      return recipeIngredientObj
-    })
+        return recipeIngredientObj
+      },
+    )
 
     setingredientsRenderData(updatedIngredientsObj)
+    setShowTextButton(true)
   }
 
   useEffect(() => {
@@ -46,6 +61,7 @@ const SelectedRecipe: FC = () => {
       return {
         ingredientName: line.toLowerCase(),
         ingredientContainerStyle: 'p-2 m-1 w-96',
+        isMissing: false,
       }
     })
     setingredientsRenderData(ingredientsRenderObject)
@@ -73,7 +89,7 @@ const SelectedRecipe: FC = () => {
             {ingredientsRenderData?.map((line, index) => {
               return (
                 <div
-                  key={`${line.ingredienName}_${index}`}
+                  key={`${line.ingredientName}_${index}`}
                   className={line.ingredientContainerStyle}
                 >
                   • {line.ingredientName}
@@ -91,9 +107,21 @@ const SelectedRecipe: FC = () => {
               </button>
             </div>
             <div>
-              <button className="selectedRecipeButtons bg-blue-300 hover:bg-blue-400">
-                <a href={url}>Text the missing ingredients to your phone!</a>
-              </button>
+              {showTextButton && (
+                <button
+                  onClick={() => setShowTwilioInput(!showTwilioInput)}
+                  className="selectedRecipeButtons bg-blue-300 hover:bg-blue-400"
+                >
+                  Text the missing ingredients to your phone!
+                </button>
+              )}
+              {showTwilioInput && (
+                <TwilioInput
+                  missingIngredients={ingredientsRenderData.filter(
+                    (item) => item.isMissing === true,
+                  )}
+                />
+              )}
             </div>
           </div>
         </div>
