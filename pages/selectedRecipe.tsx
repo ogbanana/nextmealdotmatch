@@ -74,6 +74,13 @@ const SelectedRecipe: FC = () => {
     setingredientsRenderData(ingredientsRenderObject)
   }, [recipe])
 
+  function handleTwilioClick(event) {
+    if (event.target.id === 'phoneNumberInput' || event.target.id === 'sendTextButton') {
+      return
+    }
+    setShowTwilioInput(!showTwilioInput)
+  }
+
   return (
     <div id="selectedRecipePage">
       <Nav />
@@ -115,11 +122,14 @@ const SelectedRecipe: FC = () => {
             </div>
             <div>
               {showTextButton && (
-                <button
+                <div
+                  id="selectedRecipeButtons"
                   className="selectedRecipeButtons bg-blue-300 hover:bg-blue-400"
-                  onClick={() => setShowTwilioInput(!showTwilioInput)}
+                  onClick={handleTwilioClick}
                 >
-                  Text the missing ingredients to your phone!
+                  <label className="w-full text-center flex-wrap flex">
+                    Text the missing ingredients to your phone!
+                  </label>
                   {showTwilioInput && (
                     <TwilioInput
                       missingIngredients={ingredientsRenderData.filter(
@@ -127,7 +137,7 @@ const SelectedRecipe: FC = () => {
                       )}
                     />
                   )}
-                </button>
+                </div>
               )}
             </div>
           </div>
