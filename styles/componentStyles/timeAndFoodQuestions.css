@@ -1,0 +1,27 @@
+.quizQuestionContainer {
+  @apply h-screen w-auto md:w-5/6 flex flex-col justify-center items-center;
+}
+
+.quizQuestion {
+  @apply w-full h-auto text-xl md:text-3xl p-8 mb-10 bg-gray-100 bg-opacity-70 border-2 rounded-lg;
+}
+
+.quizOptions {
+  @apply flex justify-center md:w-2/3;
+}
+
+.quizOptionsContainer {
+  @apply flex flex-wrap justify-center;
+}
+
+.option {
+  @apply h-24 w-24 text-sm md:h-28 md:w-28 rounded-xl m-2 flex items-center justify-center  text-teal-50 bg-blueGray-700 hover:bg-blueGray-800 focus:bg-blueGray-800 active:bg-blueGray-800 drop-shadow-2xl;
+}
+
+.nextButton {
+  @apply w-28 h-12 p-2 bg-green-300 rounded-lg hover:bg-green-400 drop-shadow-3xl;
+}
+
+.previousButton {
+  @apply w-32 h-12 p-2 mr-2 bg-rose-300 rounded-lg hover:bg-rose-400 drop-shadow-3xl;
+}

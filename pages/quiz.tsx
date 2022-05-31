@@ -105,7 +105,7 @@ const Quiz: FC = () => {
               </div>
             </div>
 
-            <div className="w-full h-full overflow-scroll">
+            <div id="screenRight">
               <TimeQuestion handleTimeOption={handleTimeOption} />
               {data.map((question, idx) => {
                 return (
@@ -123,14 +123,11 @@ const Quiz: FC = () => {
             </div>
           </div>
         </div>
-        <Link href="/quiz#0" passHref>
-          <button
-            type="button"
-            className="w-32 h-12 p-2 mr-2 bg-green-300 rounded-lg hover:bg-rose-400 drop-shadow-3xl absolute bottom-0"
-          >
+        {/* <Link href="/quiz#0" passHref>
+          <button type="button" id="backToTopButton">
             Back To Top
           </button>
-        </Link>
+        </Link> */}
       </div>
     </>
   )

@@ -16,32 +16,31 @@ const FoodQuestion = ({
   submitIsDisabled,
 }) => {
   return (
-    <div id={id} className="h-screen w-5/6 flex flex-col justify-center items-center">
-      <div className="h-auto text-4xl font-bold p-8 mb-10 bg-gray-100 bg-opacity-50 border-2 rounded-lg">
-        {data.question}
-      </div>
-      <div className="flex justify-center w-2/3">
-        <div className="flex flex-wrap">
+    <div id={id} className="quizQuestionContainer">
+      <div className="quizQuestion">{data.question}</div>
+      <div className="quizOptions">
+        <div className="quizOptionsContainer">
           {data.options.map((option, index) => {
             return (
-              <Option key={option + index} onClick={handleIngredientOption} value={option}>
+              <button
+                key={option + index}
+                className="option"
+                onClick={handleIngredientOption}
+                value={option}
+              >
                 {option}
-              </Option>
+              </button>
             )
           })}
         </div>
       </div>
       <div className="mt-10">
         <Link href={`/quiz#${id - 1}`} passHref>
-          <button className="w-32 h-12 p-2 mr-2 bg-rose-300 rounded-lg hover:bg-rose-400 drop-shadow-3xl">
-            &#8592; Previous
-          </button>
+          <button className="previousButton">&#8592; Previous</button>
         </Link>
         {length !== id ? (
           <Link href={`/quiz#${id + 1}`} passHref>
-            <button className="w-24 h-12 p-2 bg-green-300 rounded-lg hover:bg-green-400 drop-shadow-3xl">
-              Next &#8594;
-            </button>
+            <button className="nextButton">Next &#8594;</button>
           </Link>
         ) : (
           <button
