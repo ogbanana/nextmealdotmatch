@@ -65,13 +65,9 @@ const Quiz: FC = () => {
             <div id="screenLeft">
               <div id="cuttingBoard" className="scrollbar">
                 <div id="selectedItemsContainers">
-                  <div className="text-lg mt-4 mb-4 flex flex-col items-center justify-center w-full">
+                  <div id="selectedTimeContainer">
                     {userTime && (
-                      <button
-                        onClick={deselectTime}
-                        type="button"
-                        className="bg-gray-200 bg-opacity-80 border-2 p-2 rounded-lg"
-                      >
+                      <button onClick={deselectTime} type="button" id="selectedTime">
                         Selected Time: {userTime}
                       </button>
                     )}
