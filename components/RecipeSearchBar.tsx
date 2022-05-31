@@ -35,7 +35,7 @@ const RecipeSearchBar: FC<Props> = ({
     return () => {
       window.removeEventListener('reset', () => {})
     }
-  }, [])
+  }, [setHamburgerMenuButtonWasClicked])
 
   return (
     <div id="searchBarFormContainer" hidden={!windowIsSmallAndButtonWasClicked}>

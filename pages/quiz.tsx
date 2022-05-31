@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Router from 'next/router'
 
 import { FC, MouseEvent, useContext, useEffect, useState } from 'react'
@@ -70,7 +69,7 @@ const Quiz: FC = () => {
       setRenderCuttingBoardInNav(true)
     })
     return () => {
-      window.removeEventListener('reset', () => {})
+      window.removeEventListener('reset', () => null)
     }
   }, [])
 

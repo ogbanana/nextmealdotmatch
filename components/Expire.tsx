@@ -15,7 +15,7 @@ const Expire: FC<Props> = ({ children, delay, setSendMessageStatus }) => {
       setVisible(false)
     }, delay)
     return () => clearTimeout(timer)
-  }, [delay])
+  }, [delay, setSendMessageStatus])
 
   return visible ? <div>{children}</div> : <div />
 }

@@ -73,7 +73,7 @@ const SelectedRecipe: FC = () => {
       }
     })
     setingredientsRenderData(ingredientsRenderObject)
-  }, [recipe])
+  }, [recipe, ingredientLines])
 
   const handleTwilioClick = (event: MouseEvent<HTMLDivElement>) => {
     const div = event.target as HTMLDivElement
