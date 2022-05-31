@@ -43,5 +43,5 @@
 }
 
 .selectedRecipeButtons {
-  @apply md:text-center h-auto rounded-xl p-2 m-4 bg-red-200 hover:bg-red-300 active:bg-red-400 focus:bg-red-400 focus:outline-none focus:ring focus:ring-red-300;
+  @apply text-center h-auto rounded-xl p-2 m-4 bg-red-200 hover:bg-red-300 active:bg-red-400 focus:bg-red-400 focus:outline-none focus:ring focus:ring-red-300;
 }

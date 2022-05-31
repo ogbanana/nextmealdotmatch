@@ -85,6 +85,10 @@ const SelectedRecipe: FC = () => {
     setShowTwilioInput(!showTwilioInput)
   }
 
+  useEffect(() => {
+    window.scroll({ top: window.innerHeight, left: 0, behavior: 'smooth' })
+  }, [showTextButton, showTwilioInput])
+
   return (
     <div id="selectedRecipePage">
       <Nav />
@@ -127,7 +131,7 @@ const SelectedRecipe: FC = () => {
             </div>
             <div>
               {showTextButton && (
-                <div>
+                <div id="twilioTextBox">
                   <div className="selectedRecipeButtons" onClick={handleTwilioClick}>
                     <label>Text the missing ingredients to your phone!</label>
                     {showTwilioInput && (
