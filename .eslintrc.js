@@ -7,6 +7,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:@next/next/recommended',
+    'eslint:recommended',
   ],
   parserOptions: {
     sourceType: 'module',

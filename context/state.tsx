@@ -7,7 +7,7 @@ interface UserIngredientsInterface {
 }
 
 const userIngredientsDefaultValue = {
-  userIngredients: [],
+  userIngredients: [] as string[],
   setUserIngredients: () => {},
   userTime: '',
   setUserTime: () => {},

@@ -5,12 +5,16 @@ import { useQuery } from 'react-query'
 
 import Nav from '../components/Nav'
 import RecipeCard from '../components/RecipeCard'
+import { Recipe } from './selectedRecipe'
+interface RecipeData {
+  recipe: Recipe
+}
 
 const Results: FC = () => {
   const router = useRouter()
   const { foodQuery } = router.query
 
-  const { data, isLoading, isError } = useQuery(
+  const { data, isLoading, isError } = useQuery<RecipeData[]>(
     ['getRecipes', foodQuery],
     async () => {
       const recipes = await fetch('/api/getRecipes', {

@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router'
 
-import { FC, useContext, useEffect, useState } from 'react'
+import { FC, useContext, useEffect, useState, MouseEvent } from 'react'
 
 import { SelectedIngredientsContext } from '../context/state'
 
 import Nav from '../components/Nav'
 import TwilioInput from '../components/TwilioInput'
 
-interface Recipe {
+export interface Recipe {
   calories: string
   image: string
   ingredientLines: string[]
@@ -74,10 +74,13 @@ const SelectedRecipe: FC = () => {
     setingredientsRenderData(ingredientsRenderObject)
   }, [recipe])
 
-  function handleTwilioClick(event) {
-    if (event.target.id === 'phoneNumberInput' || event.target.id === 'sendTextButton') {
+  function handleTwilioClick(event: MouseEvent<HTMLDivElement>) {
+    const div = event.target as HTMLDivElement
+
+    if (div.id === 'phoneNumberInput' || div.id === 'sendTextButton') {
       return
     }
+
     setShowTwilioInput(!showTwilioInput)
   }
 
