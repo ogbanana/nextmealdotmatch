@@ -28,6 +28,7 @@ const Results: FC = () => {
     },
     {
       refetchOnMount: false,
+      refetchOnWindowFocus: false,
     },
   )
 

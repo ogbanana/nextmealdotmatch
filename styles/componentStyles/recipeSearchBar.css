@@ -1,5 +1,5 @@
 #searchBarFormContainer {
-  @apply md:mb-6 mb-0 pb-2;
+  @apply justify-center pb-6 md:pb-0;
 }
 
 #searchBarForm {

@@ -21,7 +21,7 @@ const RecipeCard: FC<RecipeCardProps> = ({ recipe }) => {
 
   return (
     <button onClick={() => handleClick()}>
-      <div className="flex flex-col h-70 bg-opacity-50 bg-gray-100 hover:border-2 hover:border-green-300 hover:bg-opacity-100 w-80 mr-4 ml-4 pb-4 border rounded-xl">
+      <div className="flex flex-col h-68 bg-opacity-50 bg-gray-100 hover:border-2 hover:shadow-lg  hover:bg-opacity-100 w-80 mr-4 ml-4 pb-4 border rounded-xl">
         <Image
           className="rounded-t-xl"
           src={recipe.image}
