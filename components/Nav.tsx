@@ -7,7 +7,7 @@ import RecipeSearchBar from './RecipeSearchBar'
 
 interface Props {
   children?: ReactNode
-  numIngredients: number
+  numIngredients?: number
 }
 
 const Nav: FC<Props> = ({ children, numIngredients }) => {

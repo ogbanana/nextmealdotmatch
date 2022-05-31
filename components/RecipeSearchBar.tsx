@@ -20,19 +20,18 @@ const RecipeSearchBar: FC<Props> = ({
     (windowSize <= 768 && hamburgerMenuButtonWasClicked) || windowSize > 768
 
   useEffect(() => {
-    if (window) {
-      if (window.innerWidth > 768) {
-        setHamburgerMenuButtonWasClicked(true)
-        setWindowSize(window.innerWidth)
-      }
-
-      window.addEventListener('resize', function () {
-        if (window.innerWidth > 768) {
-          setHamburgerMenuButtonWasClicked(false)
-        }
-        setWindowSize(window.innerWidth)
-      })
+    if (window?.innerWidth > 768) {
+      setHamburgerMenuButtonWasClicked(true)
+      setWindowSize(window.innerWidth)
     }
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) {
+        setHamburgerMenuButtonWasClicked(false)
+      }
+      setWindowSize(window.innerWidth)
+    })
+
     return () => {
       window.removeEventListener('reset', () => {})
     }
