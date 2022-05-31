@@ -15,6 +15,7 @@ import '../styles/pageStyles/selectedRecipe.css'
 import '../styles/componentStyles/nav.css'
 import '../styles/componentStyles/twilioInput.css'
 import '../styles/componentStyles/recipeSearchBar.css'
+import '../styles/componentStyles/timeAndFoodQuestions.css'
 
 const queryClient = new QueryClient()
 

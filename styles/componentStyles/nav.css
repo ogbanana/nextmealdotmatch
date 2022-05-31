@@ -1,5 +1,5 @@
 #navContainer {
-  @apply w-screen flex flex-col justify-between border-b absolute top-0 z-50 lg:bg-opacity-70 bg-gray-100 md:flex-row;
+  @apply w-screen flex flex-col justify-between border-b absolute top-0 z-50 md:bg-opacity-70 bg-gray-100 md:flex-row;
 }
 
 #menuContainer {
@@ -12,7 +12,7 @@
 
 #logoContainer h1 {
   font-family: 'Arima Madurai', cursive;
-  @apply text-blueGray-800 text-3xl md:text-4xl lg:text-5xl;
+  @apply text-blueGray-800 text-3xl md:text-4xl md:text-5xl;
 }
 
 #hamburgerMenu {

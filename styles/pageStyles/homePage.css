@@ -1,13 +1,13 @@
 #homePageContainer {
-  @apply w-screen h-screen flex justify-center items-center bg-homepage-full bg-no-repeat bg-cover lg:justify-end lg:items-center;
+  @apply w-screen h-screen flex justify-center items-center bg-homepage-full bg-no-repeat bg-cover md:justify-end md:items-center;
 }
 
 #homePageTextBox {
-  @apply h-4/6 p-10 bg-white bg-opacity-80 items-center justify-center lg:mt-28 lg:w-6/12 flex lg:pr-48 flex-col lg:bg-transparent;
+  @apply h-4/6 p-10 bg-white bg-opacity-80 items-center justify-center md:mt-28 md:w-6/12 flex md:pr-48 flex-col md:bg-transparent;
 }
 
 #homePageTitle {
-  @apply flex text-center justify-center text-3xl lg:text-5xl mb-2 text-green-800;
+  @apply flex text-center justify-center text-3xl md:text-5xl mb-2 text-green-800;
 }
 
 #homePageDescription {
