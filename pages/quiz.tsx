@@ -108,7 +108,7 @@ const Quiz: FC = () => {
                 return (
                   <FoodQuestion
                     key={`${idx}${question}`}
-                    id={idx}
+                    id={idx.toString()}
                     data={question}
                     length={data.length - 1}
                     handleIngredientOption={handleIngredientOption}
@@ -120,11 +120,6 @@ const Quiz: FC = () => {
             </div>
           </div>
         </div>
-        {/* <Link href="/quiz#0" passHref>
-          <button type="button" id="backToTopButton">
-            Back To Top
-          </button>
-        </Link> */}
       </div>
     </>
   )

@@ -61,7 +61,3 @@
 #screenRight {
   @apply w-full h-full overflow-scroll;
 }
-
-/* #backTopTopButton {
-  @apply w-32 h-12 p-2 mr-2 bg-green-300 rounded-lg hover:bg-rose-400 drop-shadow-3xl absolute bottom-0;
-} */

@@ -1,6 +1,11 @@
 import Link from 'next/link'
+import { FC, MouseEvent } from 'react'
 
-const TimeQuestion = ({ handleTimeOption }) => {
+interface Props {
+  handleTimeOption: (event: MouseEvent<HTMLButtonElement>) => void
+}
+
+const TimeQuestion: FC<Props> = ({ handleTimeOption }) => {
   const timeOption = {
     question: 'How much time do you have for this meal?',
     options: ['30 Minutes', '60 Minutes', '90 Minutes'],

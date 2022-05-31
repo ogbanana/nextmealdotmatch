@@ -1,13 +1,19 @@
 import Link from 'next/link'
+import { FC, MouseEvent } from 'react'
 
-const Option = (props) => (
-  <button
-    className="h-28 w-28 border-0 rounded-xl m-2 flex items-center justify-center  text-teal-100 bg-blueGray-700 hover:bg-blueGray-300 hover:text-teal-700 hover:border hover:border-blueGray-800 drop-shadow-2xl"
-    {...props}
-  />
-)
+interface Props {
+  id: string
+  data: {
+    question: string
+    options: string[]
+  }
+  length: number
+  handleIngredientOption: (event: MouseEvent<HTMLButtonElement>) => void
+  handleSubmit: () => void
+  submitIsDisabled: boolean
+}
 
-const FoodQuestion = ({
+const FoodQuestion: FC<Props> = ({
   id,
   data,
   length,
@@ -35,10 +41,10 @@ const FoodQuestion = ({
         </div>
       </div>
       <div className="mt-10">
-        <Link href={`/quiz#${id - 1}`} passHref>
+        <Link href={`/quiz#${+id - 1}`} passHref>
           <button className="previousButton">&#8592; Previous</button>
         </Link>
-        {length !== id ? (
+        {length.toString() !== id ? (
           <Link href={`/quiz#${id + 1}`} passHref>
             <button className="nextButton">Next &#8594;</button>
           </Link>
