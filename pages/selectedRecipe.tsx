@@ -128,7 +128,7 @@ const SelectedRecipe: FC = () => {
             <div>
               {showTextButton && (
                 <div>
-                  <button className="selectedRecipeButtons" onClick={() => handleTwilioClick()}>
+                  <div className="selectedRecipeButtons" onClick={handleTwilioClick}>
                     <label>Text the missing ingredients to your phone!</label>
                     {showTwilioInput && (
                       <TwilioInput
@@ -137,7 +137,7 @@ const SelectedRecipe: FC = () => {
                         )}
                       />
                     )}
-                  </button>
+                  </div>
                 </div>
               )}
             </div>
