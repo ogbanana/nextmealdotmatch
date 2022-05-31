@@ -45,7 +45,7 @@ const FoodQuestion: FC<Props> = ({
           <button className="previousButton">&#8592; Previous</button>
         </Link>
         {length.toString() !== id ? (
-          <Link href={`/quiz#${id + 1}`} passHref>
+          <Link href={`/quiz#${+id + 1}`} passHref>
             <button className="nextButton">Next &#8594;</button>
           </Link>
         ) : (
