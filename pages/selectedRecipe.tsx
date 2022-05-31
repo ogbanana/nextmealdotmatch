@@ -73,6 +73,7 @@ const SelectedRecipe: FC = () => {
       }
     })
     setingredientsRenderData(ingredientsRenderObject)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipe])
 
   const handleTwilioClick = (event: MouseEvent<HTMLDivElement>) => {
