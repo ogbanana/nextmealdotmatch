@@ -1,3 +1,19 @@
+#searchBarFormContainer {
+  @apply mb-6;
+}
+
+#searchBarForm {
+  @apply w-full h-auto flex items-center justify-center  md:pt-2 md:justify-center md:pr-5  md:items-center md:mr-20;
+}
+
 #searchBarContainer {
-  @apply md:pt-2 md:justify-center md:pr-5 flex md:items-center md:mr-20 w-full items-start justify-start;
+  @apply flex items-center justify-center;
+}
+
+#searchBarInput {
+  @apply p-2 rounded-lg border mr-2 md:w-72 w-full;
+}
+
+#searchBarButton {
+  @apply p-2 w-20 rounded-lg bg-green-300 ml-2 md:mb-0;
 }

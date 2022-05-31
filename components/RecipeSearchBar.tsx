@@ -37,7 +37,10 @@ const RecipeSearchBar: FC<Props> = ({
   }, [])
 
   return (
-    <div className={windowIsSmallAndButtonWasClicked ? 'flex' : 'hidden'}>
+    <div
+      id="searchBarFormContainer"
+      className={windowIsSmallAndButtonWasClicked ? 'flex' : 'hidden'}
+    >
       <form
         onSubmit={(event: FormEvent<HTMLFormElement>) => {
           event.preventDefault()
@@ -51,18 +54,16 @@ const RecipeSearchBar: FC<Props> = ({
             query: { foodQuery },
           })
         }}
-        id="searchBarContainer"
+        id="searchBarForm"
       >
-        <div className="flex items-start md:items-center md:flex-row flex-col">
+        <div id="searchBarContainer">
           <input
             name="recipeSearch"
             type="text"
             placeholder="chocolate chip cookies"
-            className="h-10 rounded-lg border pl-2 m-2 md:w-72 w-full "
+            id="searchBarInput"
           ></input>
-          <button className="border p-1 h-10 w-20 rounded-lg bg-green-300 ml-2 mb-2 md:mb-0">
-            Search
-          </button>
+          <button id="searchBarButton">Search</button>
         </div>
       </form>
     </div>
