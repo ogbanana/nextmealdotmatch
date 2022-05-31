@@ -19,5 +19,5 @@
 }
 
 .homePageButton {
-  @apply bg-green-300 p-4 rounded-lg drop-shadow-lg;
+  @apply p-4 rounded-lg bg-green-300 hover:bg-green-400 drop-shadow-3xl;
 }

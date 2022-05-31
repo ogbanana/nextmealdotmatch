@@ -33,7 +33,7 @@ const Results: FC = () => {
 
   const displayRecipeList = () => {
     if (isError) {
-      return <div className="text-red-700">There was an error fetching recipes</div>
+      return <div className="text-red-400">There was an error fetching recipes</div>
     }
 
     if (isLoading) {
@@ -44,7 +44,7 @@ const Results: FC = () => {
       return data.map((current) => {
         return (
           <div
-            className="mb-16 recipeList:basis-1/3 recipeList:w-1/3 flex justify-center sm:basis-full sm:w-full"
+            className="h-70 mb-10 recipeList:basis-1/3 recipeList:w-1/3 flex justify-center sm:basis-full sm:w-full"
             key={current.recipe.label}
           >
             <RecipeCard recipe={current.recipe} />

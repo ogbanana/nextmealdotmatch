@@ -1,5 +1,5 @@
 #twilioInputContainer {
-  @apply flex flex-col pl-2;
+  @apply flex flex-col pl-2 justify-center items-center;
 }
 
 #phoneNumberInput {
@@ -15,5 +15,5 @@
 }
 
 #sendTextButton {
-  @apply border p-1 h-10 rounded-lg bg-green-300 ml-2 mt-2 mb-2 md:mb-0 hover:bg-green-400;
+  @apply h-10 w-1/2 rounded-lg bg-blue-300 pb-2 ml-2 mt-2 mb-2 md:mb-0 hover:bg-blue-400;
 }
