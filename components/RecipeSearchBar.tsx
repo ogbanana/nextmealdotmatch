@@ -1,16 +1,18 @@
 import Router from 'next/router'
-import { FC, FormEvent, useEffect, useState } from 'react'
+import { FC, FormEvent, ReactNode, useEffect, useState } from 'react'
 
 import { formatQuery } from '../utils/helpers'
 
 interface Props {
   hamburgerMenuButtonWasClicked: boolean
   setHamburgerMenuButtonWasClicked: (status: boolean) => void
+  children?: ReactNode
 }
 
 const RecipeSearchBar: FC<Props> = ({
   hamburgerMenuButtonWasClicked,
   setHamburgerMenuButtonWasClicked,
+  children,
 }) => {
   const [windowSize, setWindowSize] = useState(0)
 
@@ -37,10 +39,7 @@ const RecipeSearchBar: FC<Props> = ({
   }, [])
 
   return (
-    <div
-      id="searchBarFormContainer"
-      className={windowIsSmallAndButtonWasClicked ? 'flex' : 'hidden'}
-    >
+    <div id="searchBarFormContainer" hidden={!windowIsSmallAndButtonWasClicked}>
       <form
         onSubmit={(event: FormEvent<HTMLFormElement>) => {
           event.preventDefault()
@@ -66,6 +65,7 @@ const RecipeSearchBar: FC<Props> = ({
           <button id="searchBarButton">Search</button>
         </div>
       </form>
+      {children}
     </div>
   )
 }

@@ -18,12 +18,16 @@
   @apply hidden md:w-7/12 md:h-5/6 md:bg-cuttingboard-image md:bg-no-repeat md:mt-20 md:bg-cover md:rounded-3xl md:flex md:flex-col md:justify-between md:items-center md:drop-shadow-3xl md:overflow-auto;
 }
 
+#cuttingBoardNav {
+  @apply mt-4 bg-cuttingboard-image md:bg-no-repeat p-4  md:justify-between md:items-center md:drop-shadow-3xl;
+}
+
 #selectedItemsContainer {
-  @apply flex flex-col h-auto w-full justify-center items-center;
+  @apply sm:h-48  flex flex-col md:h-auto w-full justify-center items-center;
 }
 
 #selectedTimeContainer {
-  @apply text-lg mt-4 mb-4 flex flex-col items-center justify-center w-full;
+  @apply text-lg mt-4 mb-4 flex flex-col items-center justify-center w-full h-48;
 }
 
 #selectedTime {
@@ -35,7 +39,7 @@
 }
 
 .submitButton {
-  @apply flex flex-col md:flex-row w-full pb-14 items-center justify-around relative mt-32;
+  @apply flex  md:flex-row w-full pb-0 md:pb-14 items-center justify-around relative md:mt-32 mt-0;
 }
 
 #submitNow {

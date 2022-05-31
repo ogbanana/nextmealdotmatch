@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Router from 'next/router'
 
-import { FC, MouseEvent, useState, useContext } from 'react'
+import { FC, MouseEvent, useContext, useEffect, useState } from 'react'
 
 import Nav from '../components/Nav'
 import FoodQuestion from '../components/FoodQuestion'
@@ -11,11 +11,14 @@ import data from '../utils/data.json'
 import { formatQuery } from '../utils/helpers'
 
 import { SelectedIngredientsContext } from '../context/state'
+import CuttingBoard from '../components/CuttingBoard'
 
 const Quiz: FC = () => {
   const { userIngredients, setUserIngredients, userTime, setUserTime } = useContext(
     SelectedIngredientsContext,
   )
+
+  const [renderCuttingBoardInNav, setRenderCuttingBoardInNav] = useState(false)
 
   const handleTimeOption = (event: MouseEvent<HTMLButtonElement>) => {
     const button = event.target as HTMLButtonElement
@@ -55,56 +58,50 @@ const Quiz: FC = () => {
     setUserTime('')
   }
 
+  useEffect(() => {
+    if (window?.location?.pathname === '/quiz' && window?.innerWidth < 768) {
+      setRenderCuttingBoardInNav(true)
+    }
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 768) {
+        setRenderCuttingBoardInNav(false)
+        return
+      }
+      setRenderCuttingBoardInNav(true)
+    })
+    return () => {
+      window.removeEventListener('reset', () => {})
+    }
+  }, [])
+
   return (
     <>
-      <Nav />
-
+      <Nav numIngredients={userIngredients.length}>
+        {renderCuttingBoardInNav && (
+          <CuttingBoard
+            renderInNav={renderCuttingBoardInNav}
+            userTime={userTime}
+            deselectTime={deselectTime}
+            userIngredients={userIngredients}
+            deselectIngredient={deselectIngredient}
+            handleSubmit={handleSubmit}
+            clearBoard={clearBoard}
+          />
+        )}
+      </Nav>
       <div id="quizScreen">
         <div id="questionsBackground">
           <div id="questionsContainer">
             <div id="screenLeft">
-              <div id="cuttingBoard" className="scrollbar">
-                <div id="selectedItemsContainers">
-                  <div id="selectedTimeContainer">
-                    {userTime && (
-                      <button onClick={deselectTime} type="button" id="selectedTime">
-                        Selected Time: {userTime}
-                      </button>
-                    )}
-                    <div className="w-5/6 h-full flex items-center justify-center mt-8">
-                      <div className="flex flex-wrap w-full h-full pl-4">
-                        {userIngredients.length > 0 &&
-                          userIngredients.map((ingredient, index) => {
-                            return (
-                              <button
-                                id="selectedItem"
-                                key={ingredient + index}
-                                value={ingredient}
-                                onClick={deselectIngredient}
-                              >
-                                {ingredient}
-                              </button>
-                            )
-                          })}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="submitButton">
-                  <button
-                    disabled={!userTime}
-                    id={!userTime ? 'submitNowDisabled' : 'submitNow'}
-                    onClick={handleSubmit}
-                  >
-                    Submit Now
-                  </button>
-                  <button onClick={clearBoard} id="clearBoardButton" type="button">
-                    Clear Board
-                  </button>
-                </div>
-              </div>
+              <CuttingBoard
+                userTime={userTime}
+                deselectTime={deselectTime}
+                userIngredients={userIngredients}
+                deselectIngredient={deselectIngredient}
+                handleSubmit={handleSubmit}
+                clearBoard={clearBoard}
+              />
             </div>
-
             <div id="screenRight">
               <TimeQuestion handleTimeOption={handleTimeOption} />
               {data.map((question, idx) => {

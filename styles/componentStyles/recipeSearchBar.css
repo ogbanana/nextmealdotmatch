@@ -1,5 +1,5 @@
 #searchBarFormContainer {
-  @apply mb-6;
+  @apply md:mb-6 mb-0 pb-2;
 }
 
 #searchBarForm {
