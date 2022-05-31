@@ -19,7 +19,7 @@
 }
 
 #cuttingBoardNav {
-  @apply mt-4 bg-cuttingboard-image md:bg-no-repeat p-4  md:justify-between md:items-center md:drop-shadow-3xl;
+  @apply mt-4 bg-cuttingboard-nav md:bg-no-repeat p-4 md:justify-between md:items-center md:drop-shadow-3xl;
 }
 
 #selectedItemsContainer {

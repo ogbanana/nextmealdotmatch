@@ -73,7 +73,7 @@ const SelectedRecipe: FC = () => {
       }
     })
     setingredientsRenderData(ingredientsRenderObject)
-  }, [recipe, ingredientLines])
+  }, [recipe])
 
   const handleTwilioClick = (event: MouseEvent<HTMLDivElement>) => {
     const div = event.target as HTMLDivElement
@@ -101,9 +101,9 @@ const SelectedRecipe: FC = () => {
             <img className="w-full" src={image} />
           </a>
           <label>Calories</label>
-          <p>{calories}</p>
+          <p>{parseInt(calories)}</p>
           <label>Total Cooking Time</label>
-          <p>{totalTime}</p>
+          <p>{totalTime === '0' ? 'No estimated time' : totalTime}</p>
         </div>
 
         <div id="selectedRecipeIngredientsPanel">

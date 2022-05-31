@@ -28,7 +28,7 @@ const CuttingBoard: FC<Props> = ({
             </button>
           )}
           <div className="w-5/6 h-full flex items-center justify-center md:mt-8 mt-0">
-            <div className="flex flex-wrap w-full md:h-full pl-4 max-h-36 md-max-h-full overflow-auto md:overflow-visible ">
+            <div className="flex flex-wrap w-full pl-4 max-h-36 md-max-h-full overflow-auto md:overflow-visible ">
               {userIngredients.length > 0 &&
                 userIngredients.map((ingredient, index) => {
                   return (

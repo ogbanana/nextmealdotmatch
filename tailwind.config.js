@@ -10,6 +10,7 @@ module.exports = {
       backgroundImage: {
         'homepage-full': 'url("/images/homepage-bg-full.jpeg")',
         'cuttingboard-image': 'url("/images/cuttingboard-image.jpg")',
+        'cuttingboard-nav': 'url("/images/cuttingBoard.png")',
         'kitchen-image': 'url("/images/kitchen-image.jpg")',
         'results-image': 'url("/images/results-image.jpg")',
         'recipe-image': 'url("/images/recipe-image.jpg")',
