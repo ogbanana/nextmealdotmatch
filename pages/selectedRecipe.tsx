@@ -45,12 +45,13 @@ const SelectedRecipe: FC = () => {
         )
 
         if (!highlightIngredients) {
-          recipeIngredientObj.ingredientContainerStyle = 'p-2 m-1 w-96'
+          recipeIngredientObj.ingredientContainerStyle = 'ingredientLine'
           setHighlightIngredients(true)
         }
 
         if (!ingredientFound && highlightIngredients) {
-          recipeIngredientObj.ingredientContainerStyle = 'p-2 m-1 w-96 rounded-xl bg-red-300'
+          recipeIngredientObj.ingredientContainerStyle =
+            'm-1 p-1 pl-4 w-auto rounded-lg text-sm md:rounded-xl bg-red-300 md:p-2 md:w-full'
           recipeIngredientObj.isMissing = true
           setHighlightIngredients(false)
         }
@@ -67,14 +68,14 @@ const SelectedRecipe: FC = () => {
     const ingredientsRenderObject = ingredientLines?.map((line) => {
       return {
         ingredientName: line.toLowerCase(),
-        ingredientContainerStyle: 'p-2 m-1 w-96',
+        ingredientContainerStyle: 'ingredientLine',
         isMissing: false,
       }
     })
     setingredientsRenderData(ingredientsRenderObject)
   }, [recipe])
 
-  function handleTwilioClick(event: MouseEvent<HTMLDivElement>) {
+  const handleTwilioClick = (event: MouseEvent<HTMLDivElement>) => {
     const div = event.target as HTMLDivElement
 
     if (div.id === 'phoneNumberInput' || div.id === 'sendTextButton') {
@@ -103,6 +104,7 @@ const SelectedRecipe: FC = () => {
 
         <div id="selectedRecipeIngredientsPanel">
           <div id="selectedRecipeIngredients">
+            <label className="text-center text-lg font-semibold">Ingredients</label>
             {ingredientsRenderData?.map((line, index) => {
               return (
                 <div
@@ -117,7 +119,7 @@ const SelectedRecipe: FC = () => {
           <div id="selectedRecipeButtonsContainer">
             <div>
               <button
-                className="selectedRecipeButtons bg-red-200 hover:bg-red-300 active:bg-red-400 focus:bg-red-400 focus:outline-none focus:ring focus:ring-red-300"
+                className="selectedRecipeButtons "
                 onClick={() => handleMissingIngredientsButton()}
               >
                 Show me my missing ingredients!
@@ -125,21 +127,17 @@ const SelectedRecipe: FC = () => {
             </div>
             <div>
               {showTextButton && (
-                <div
-                  id="selectedRecipeButtons"
-                  className="selectedRecipeButtons bg-blue-300 hover:bg-blue-400"
-                  onClick={handleTwilioClick}
-                >
-                  <label className="w-full text-center flex-wrap flex">
-                    Text the missing ingredients to your phone!
-                  </label>
-                  {showTwilioInput && (
-                    <TwilioInput
-                      missingIngredients={ingredientsRenderData.filter(
-                        (item) => item.isMissing === true,
-                      )}
-                    />
-                  )}
+                <div>
+                  <button className="selectedRecipeButtons" onClick={() => handleTwilioClick()}>
+                    <label>Text the missing ingredients to your phone!</label>
+                    {showTwilioInput && (
+                      <TwilioInput
+                        missingIngredients={ingredientsRenderData.filter(
+                          (item) => item.isMissing === true,
+                        )}
+                      />
+                    )}
+                  </button>
                 </div>
               )}
             </div>

@@ -15,5 +15,5 @@
 }
 
 #searchBarButton {
-  @apply p-2 w-20 rounded-lg bg-green-300 ml-2 md:mb-0;
+  @apply p-2 w-20 ml-2 md:mb-0 bg-green-300 rounded-lg hover:bg-green-400 drop-shadow-3xl;
 }

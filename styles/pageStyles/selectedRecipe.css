@@ -1,13 +1,13 @@
 #selectedRecipePage {
-  @apply w-screen h-screen flex items-center justify-center bg-recipe-image bg-cover;
+  @apply w-screen h-full flex items-center justify-center bg-recipe-image bg-cover md:h-screen;
 }
 
 #selectedRecipeContainer {
-  @apply relative w-5/6 h-auto mt-20 flex border-white bg-white bg-opacity-90 rounded-xl font-normal;
+  @apply relative w-full h-full mt-20 flex flex-col md:w-5/6 md:flex-row border-white bg-white bg-opacity-70 rounded-xl font-normal md:h-auto md:bg-opacity-80;
 }
 
 #selectedRecipeInfoPanel {
-  @apply flex flex-col w-auto p-10;
+  @apply flex flex-col h-full w-full p-4 md:w-2/5 md:p-10 md:h-full md:justify-center;
 }
 
 #selectedRecipeInfoPanel h1 {
@@ -23,21 +23,25 @@
 }
 
 #selectedRecipeInfoPanel img {
-  @apply rounded-2xl mt-5 mb-5;
+  @apply rounded-2xl mt-5 mb-5 w-5/6;
 }
 
 #selectedRecipeIngredientsPanel {
-  @apply w-full flex flex-row justify-evenly items-center;
+  @apply w-full h-full flex flex-col md:justify-evenly md:items-center md:flex-row md:h-auto;
 }
 
 #selectedRecipeIngredients {
-  @apply w-1/2 h-full flex flex-col items-center justify-center;
+  @apply flex flex-col justify-center pb-4 md:w-1/2;
+}
+
+.ingredientLine {
+  @apply m-1 p-1 pl-4 text-sm md:p-2;
 }
 
 #selectedRecipeButtonsContainer {
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-center md:w-1/3 md:justify-center md:items-center;
 }
 
 .selectedRecipeButtons {
-  @apply w-64 h-auto rounded-xl p-2 m-4;
+  @apply md:text-center h-auto rounded-xl p-2 m-4 bg-red-200 hover:bg-red-300 active:bg-red-400 focus:bg-red-400 focus:outline-none focus:ring focus:ring-red-300;
 }
